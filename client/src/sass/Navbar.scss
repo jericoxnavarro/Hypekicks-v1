@@ -32,7 +32,6 @@ $content: #7de89d;
 
       .nav-items {
         height: 100%;
-        margin-right: 100px;
         list-style: none;
         display: flex;
         justify-content: center;
@@ -90,6 +89,36 @@ $content: #7de89d;
         .user-fname {
           font-size: 20px;
           font-weight: 700;
+        }
+
+        .sign-in {
+          text-decoration: none;
+          height: 60%;
+          width: 100px;
+          color: $secondary;
+          font-weight: 500;
+          font-size: 17px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .sign-up {
+          text-decoration: none;
+          height: 60%;
+          width: 100px;
+          color: $primary;
+          font-weight: 700;
+          font-size: 17px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $content;
+          border-radius: 12px;
+          transition: 200ms ease-in-out;
+
+          &:hover {
+            transform: scale(1.04);
+          }
         }
       }
     }

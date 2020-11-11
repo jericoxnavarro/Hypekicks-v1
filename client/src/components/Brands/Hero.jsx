@@ -1,6 +1,5 @@
 import React from "react";
 import "../../sass/Hero.scss";
-import DOMPurify from "dompurify";
 
 const Hero = ({ brands }) => {
   const Brandlogo = () => {
@@ -228,14 +227,7 @@ const Hero = ({ brands }) => {
     <main className="main-hero">
       <div className="container">
         <Brandlogo />
-        <p
-          className="hero-text"
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(
-              `Top ${brands.toUpperCase()} Shoes in the Market right now`
-            ),
-          }}
-        ></p>
+        <p className="hero-text">{`Top ${brands.toUpperCase()} Shoes in the Market right now`}</p>
       </div>
     </main>
   );

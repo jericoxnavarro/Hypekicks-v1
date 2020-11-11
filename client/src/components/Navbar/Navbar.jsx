@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../sass/Navbar.scss";
+import "../../sass/Navbar.scss";
+import Guest from "./Guest";
+import User from "./User";
 
 const Navbar = () => {
   const [brandDisplay, setbrandDisplay] = useState("none");
   const [pricingDisplay, setpricingDisplay] = useState("none");
+  const [user, setUser] = useState("Jerico");
+
+  const Getuser = () => {
+    if (user === "") {
+      return <Guest />;
+    } else {
+      return <User name={user} />;
+    }
+  };
 
   return (
     <main className="main-nav">
@@ -34,10 +45,7 @@ const Navbar = () => {
               Pricing<i className="fad fa-angle-down down"></i>
             </li>
           </ul>
-          <div className="profile-nav">
-            <div className="profile-pic"></div>
-            <p className="user-fname">Jerico</p>
-          </div>
+          <Getuser />
         </nav>
       </div>
 
