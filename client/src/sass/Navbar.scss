@@ -1,0 +1,209 @@
+$primary: #ffffff;
+$secondary: #043353;
+$content: #7de89d;
+
+.main-nav {
+  width: 100%;
+  max-width: 100%;
+  height: 100px;
+  position: fixed;
+  background-color: $primary;
+  z-index: 10;
+
+  .container {
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      .brand-name {
+        font-family: "futurabold_italic";
+        font-size: 30px;
+        margin-right: auto;
+        text-decoration: none;
+        color: $content;
+        span {
+          font-family: "futuraextra_black";
+          color: $secondary;
+          margin-right: 2 px;
+        }
+      }
+
+      .nav-items {
+        height: 100%;
+        margin-right: 100px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $secondary;
+
+        .nav-item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100px;
+          height: 100%;
+          font-weight: 500;
+          font-size: 17px;
+          margin-right: 20px;
+          &:last-child {
+            margin-right: 0px;
+          }
+          i {
+            margin-left: 5px;
+            color: $content;
+          }
+          .down {
+            margin-left: 7px;
+            margin-top: 3px;
+            font-size: 26px;
+          }
+
+          a {
+            text-decoration: none;
+            color: $secondary;
+          }
+        }
+        .brand {
+          cursor: pointer;
+        }
+        .pricing {
+          cursor: pointer;
+        }
+      }
+
+      .profile-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        height: 100%;
+        .profile-pic {
+          height: 50px;
+          width: 50px;
+          background-color: rgb(184, 125, 37);
+          border-radius: 50%;
+          margin-right: 5px;
+        }
+        .user-fname {
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .brand-drop {
+    height: 200px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: $secondary;
+    border-bottom: 1px solid black;
+    display: none;
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        width: 150px;
+        height: 150px;
+        margin-right: 80px;
+        svg {
+          width: 100%;
+          height: 100%;
+          fill: $primary;
+        }
+        .converse {
+          .cls-1 {
+            fill: $secondary;
+          }
+          .cls-1,
+          .cls-2 {
+            fill-rule: evenodd;
+          }
+        }
+        .reebok {
+          .cls-1 {
+            stroke: #141715;
+            stroke-miterlimit: 10;
+            stroke-width: 0.09px;
+            fill-rule: evenodd;
+          }
+        }
+        .newbalance {
+          .cls-1 {
+            fill-rule: evenodd;
+          }
+        }
+        &:hover {
+          svg {
+            fill: $content;
+            transform: scale(1.1);
+          }
+        }
+      }
+      .nike-logo {
+        margin-right: 60px;
+      }
+      .adidas-logo {
+        height: 120px;
+        width: 120px;
+      }
+      .vans-logo {
+        height: 120px;
+        width: 120px;
+      }
+
+      a:last-child {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .pricing-drop {
+    height: 200px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: $secondary;
+    border-bottom: 1px solid black;
+    display: none;
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        width: 150px;
+        height: 150px;
+        margin-right: 80px;
+        svg {
+          width: 100%;
+          height: 100%;
+          fill: $primary;
+        }
+
+        img {
+          width: 100%;
+          height: 90%;
+        }
+
+        &:hover {
+          svg {
+            fill: $content;
+            transform: scale(1.1);
+          }
+          img {
+            fill: $content;
+            transform: scale(1.1);
+          }
+        }
+      }
+      a:last-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}

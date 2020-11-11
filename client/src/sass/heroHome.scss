@@ -1,0 +1,85 @@
+$primary: #ffffff;
+$secondary: #043353;
+$secondary-light: #383c58;
+$content: #7de89d;
+$text: #b3c0cc;
+
+.main-hero {
+  height: 80%;
+  width: 100%;
+  background-color: $secondary;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 60px;
+    padding-top: 100px;
+
+    .hero-heading {
+      font-family: "futuraextra_black";
+      color: $primary;
+      font-size: 80px;
+      margin-top: auto;
+    }
+    .hero-text {
+      font-weight: 500;
+      font-size: 25px;
+      color: $text;
+    }
+    .brands {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: auto;
+
+      svg {
+        height: 80px;
+        width: 80px;
+        fill: $primary;
+        margin-right: 60px;
+
+        &:last-child {
+          margin-right: 0px;
+        }
+        &:hover {
+          fill: $text;
+        }
+      }
+      .nike {
+        margin-right: 50px;
+      }
+      .adidas {
+        height: 65px;
+        width: 65px;
+      }
+      .vans {
+        height: 65px;
+        width: 65px;
+      }
+      .converse {
+        .cls-1 {
+          fill: $secondary;
+        }
+        .cls-1,
+        .cls-2 {
+          fill-rule: evenodd;
+        }
+      }
+      .reebok {
+        .cls-1 {
+          stroke: #141715;
+          stroke-miterlimit: 10;
+          stroke-width: 0.09px;
+          fill-rule: evenodd;
+        }
+      }
+      .newbalance {
+        .cls-1 {
+          fill-rule: evenodd;
+        }
+      }
+    }
+  }
+}

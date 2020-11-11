@@ -1,0 +1,45 @@
+$primary: #ffffff;
+$secondary: #043353;
+$secondary-light: #383c58;
+$content: #7de89d;
+$text: #b3c0cc;
+
+.main-hero {
+  height: 80%;
+  width: 100%;
+  background-color: $secondary;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 60px;
+    padding-top: 100px;
+
+    .hero-text {
+      font-weight: 500;
+      font-size: 25px;
+      color: $text;
+      margin-top: 20px;
+    }
+    .svg-main {
+      fill: $primary;
+      height: 250px;
+    }
+    .converse {
+      .cls-1 {
+        fill: $secondary;
+      }
+      .cls-1,
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    }
+
+    .conversesvg {
+      height: 100px;
+      width: 800px;
+    }
+  }
+}
