@@ -7,7 +7,7 @@ import User from "./User";
 const Navbar = () => {
   const [brandDisplay, setbrandDisplay] = useState("none");
   const [pricingDisplay, setpricingDisplay] = useState("none");
-  const [user, setUser] = useState("Jerico");
+  const [user, setUser] = useState("");
 
   const Getuser = () => {
     if (user === "") {
