@@ -97,6 +97,10 @@
   font-style: normal;
 }
 
+$primary: #ffffff;
+$secondary: #043353;
+$content: #7de89d;
+
 * {
   padding: 0%;
   margin: 0%;
@@ -124,4 +128,27 @@ body {
 #root {
   height: 100%;
   width: 100%;
+}
+
+.preloader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  background-color: $primary;
+  position: relative;
+
+  .svg-loader {
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: 200px;
+    fill: $secondary;
+    margin-right: 30px;
+  }
+  .lottie {
+    margin-bottom: 150px;
+  }
 }

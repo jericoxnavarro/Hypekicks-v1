@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "../../sass/Searchhero.scss";
+import "../../sass/Search.scss";
 import Shoebox from "../Shoebox";
 
-const Searchcontent = () => {
+const Search = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("Search");
@@ -328,4 +328,4 @@ const Searchcontent = () => {
   );
 };
 
-export default Searchcontent;
+export default Search;

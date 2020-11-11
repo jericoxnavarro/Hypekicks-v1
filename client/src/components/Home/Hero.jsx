@@ -1,7 +1,7 @@
 import React from "react";
-import "../../sass/heroHome.scss";
+import "../../sass/Home.scss";
 
-const heroHome = () => {
+const Hero = () => {
   return (
     <main className="main-hero">
       <div className="container">
@@ -263,4 +263,4 @@ const heroHome = () => {
   );
 };
 
-export default heroHome;
+export default Hero;
