@@ -138,9 +138,11 @@ $text: #b3c0cc;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
 
       .shoe {
         width: 100%;
+        margin-bottom: 60px;
       }
       i {
         font-size: 40px;
@@ -154,6 +156,35 @@ $text: #b3c0cc;
 
         &:hover {
           transform: scale(1.05);
+        }
+      }
+      .btns {
+        position: absolute;
+        top: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        border-radius: 20px;
+        .circle-btn {
+          height: 15px;
+          width: 15px;
+          border: none;
+          outline: none;
+          background-color: $secondary;
+          cursor: pointer;
+          &:first-child {
+            border-radius: 50% 0% 0% 50%;
+          }
+          &:last-child {
+            border-radius: 0% 50% 50% 0%;
+          }
+          &:hover {
+            border-radius: 50%;
+            transform: scale(2.1);
+            background-color: $content;
+          }
         }
       }
     }
@@ -248,7 +279,7 @@ $text: #b3c0cc;
         }
       }
       .description {
-        font-size: 14px;
+        font-size: 16px;
       }
     }
   }
