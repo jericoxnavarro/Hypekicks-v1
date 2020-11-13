@@ -1,24 +1,21 @@
-const Sneaker = require("../models/Sneaker");
-const stockXScraper = require("../scrapers/stockx-scraper");
-const flightClubScraper = require("../scrapers/flightclub-scraper");
-const goatScraper = require("../scrapers/goat-scraper");
-const stadiumGoodsScraper = require("../scrapers/stadiumgoods-scraper");
+const Sneaker = require('../models/Sneaker');
+const stockXScraper = require('../scrapers/stockx-scraper');
+const flightClubScraper = require('../scrapers/flightclub-scraper');
+const goatScraper = require('../scrapers/goat-scraper');
+const stadiumGoodsScraper = require('../scrapers/stadiumgoods-scraper');
 
 module.exports = class Sneaks {
-  findOne(shoeID, callback) {
-    Sneaker.findOne(
-      {
-        styleID: shoeID,
-      },
-      function (err, shoe) {
-        if (err) {
-          console.log(err);
-          callback(err, null);
-        }
-        callback(null, shoe);
-      }
-    );
-  }
+  /* findOne (shoeID, callback) {
+     Sneaker.findOne({
+       styleID: shoeID
+     }, function (err, shoe) {
+       if (err) {
+         console.log(err);
+         callback(err, null);
+       }
+       callback(null, shoe)
+     });
+   };*/
 
   /*exports.create = async function (req, res) {
     if (!req.params) {
@@ -37,10 +34,11 @@ module.exports = class Sneaks {
     });
   };*/
   async getProducts(keyword, callback) {
+
     var productCounter = 0;
     stockXScraper.getProductsAndInfo(keyword, function (error, products) {
       if (error) {
-        callback(error, null);
+        callback(error, null)
       }
       products.forEach(function (shoe) {
         var cbCounter = 0;
@@ -50,6 +48,7 @@ module.exports = class Sneaks {
             if (productCounter++ + 1 == products.length) {
               callback(null, products);
             }
+
           }
         });
 
@@ -59,6 +58,7 @@ module.exports = class Sneaks {
             if (productCounter++ + 1 == products.length) {
               callback(null, products);
             }
+
           }
         });
 
@@ -68,10 +68,14 @@ module.exports = class Sneaks {
             if (productCounter++ + 1 == products.length) {
               callback(null, products);
             }
+
           }
         });
       });
+
     });
+
+
   }
 
   getProductPrices(shoeID, callback) {
@@ -80,34 +84,36 @@ module.exports = class Sneaks {
       stockXScraper.getPrices(shoe, function () {
         cbCounter++;
         if (cbCounter == 5) {
-          callback(null, shoe);
+          callback(null, shoe)
         }
       });
       stadiumGoodsScraper.getPrices(shoe, function () {
         cbCounter++;
         if (cbCounter == 5) {
-          callback(null, shoe);
+          callback(null, shoe)
         }
+
       });
       flightClubScraper.getPrices(shoe, function () {
         cbCounter++;
         if (cbCounter == 5) {
-          callback(null, shoe);
+          callback(null, shoe)
         }
+
       });
       goatScraper.getPrices(shoe, function () {
         cbCounter++;
         if (cbCounter == 5) {
-          callback(null, shoe);
+          callback(null, shoe)
         }
       });
       goatScraper.getPictures(shoe, function () {
         cbCounter++;
         if (cbCounter == 5) {
-          callback(null, shoe);
+          callback(null, shoe)
         }
       });
-    };
+    }
 
     getProducts(shoeID, function (error, products) {
       if (error) {
@@ -117,7 +123,7 @@ module.exports = class Sneaks {
       }
       getPrices(products[0]);
     });
-  }
+  };
 
   /*findAll(callback) {
     Sneaker.find()
@@ -133,17 +139,18 @@ module.exports = class Sneaks {
       if (error) {
         callback(error, null);
       } else {
-        callback(null, products);
+        callback(null, products)
       }
     });
-  }
-};
+  };
+}
+
 
 var getProducts = function (keyword, callback) {
   var productCounter = 0;
   stockXScraper.getProductsAndInfo(keyword, function (error, products) {
     if (error) {
-      callback(error, null);
+      callback(error, null)
     }
     products.forEach(function (shoe) {
       var cbCounter = 0;
@@ -162,6 +169,7 @@ var getProducts = function (keyword, callback) {
           if (productCounter++ + 1 == products.length) {
             callback(null, products);
           }
+
         }
       });
 
@@ -175,4 +183,4 @@ var getProducts = function (keyword, callback) {
       });
     });
   });
-};
+}

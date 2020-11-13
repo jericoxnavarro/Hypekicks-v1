@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-require('./routes/sneaks.routes.js')(app);
-require('dotenv').config();
-const SneaksAPI = require('./controllers/sneaks.controllers.js');
+const mongoose = require("mongoose");
+require("./routes/sneaks.routes.js")(app);
+require("dotenv").config();
+const SneaksAPI = require("./controllers/sneaks.controllers.js");
 
 var port = process.env.PORT || 8080;
 mongoose.Promise = global.Promise;
@@ -14,10 +14,10 @@ mongoose.Promise = global.Promise;
 
 // Connecting to the database
 //mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/sneakers');
-console.log("NEW API")
+
 app.listen(port, function () {
   console.log(`Sneaks app listening on port `, port);
- });
+});
 
 module.exports = app;
 module.exports = SneaksAPI;
