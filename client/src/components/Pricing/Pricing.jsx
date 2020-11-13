@@ -45,7 +45,7 @@ const FlightClub = ({ pricing }) => {
               name="submit"
               onClick={updateQuery}
             >
-              <i class="fad fa-search"></i>
+              <i className="fad fa-search"></i>
             </button>
           </form>
         </div>

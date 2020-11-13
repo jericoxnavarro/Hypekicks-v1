@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../sass/Navbar.scss";
 import Guest from "./Guest";
 import User from "./User";
 
 const Navbar = () => {
-  const [brandDisplay, setbrandDisplay] = useState("none");
-  const [pricingDisplay, setpricingDisplay] = useState("none");
+  const [brandDisplay, setbrandDisplay] = useState(0);
+  const [brandVisibility, setbrandVisibility] = useState("none");
+  const [pricingDisplay, setpricingDisplay] = useState(0);
+  const [pricingVisibility, setpricingVisibility] = useState("none");
   const [user, setUser] = useState("");
 
   const Getuser = () => {
@@ -30,7 +32,12 @@ const Navbar = () => {
             </li>
             <li
               className="nav-item brand"
-              onMouseEnter={() => setbrandDisplay("block")}
+              onMouseEnter={() => {
+                setbrandVisibility("auto");
+                setbrandDisplay(1);
+                setpricingVisibility("none");
+                setpricingDisplay(0);
+              }}
             >
               Brands
               <i className="fad fa-angle-down down"></i>
@@ -40,7 +47,12 @@ const Navbar = () => {
             </li>
             <li
               className="nav-item pricing"
-              onMouseEnter={() => setpricingDisplay("block")}
+              onMouseEnter={() => {
+                setpricingVisibility("auto");
+                setpricingDisplay(1);
+                setbrandVisibility("none");
+                setbrandDisplay(0);
+              }}
             >
               Pricing<i className="fad fa-angle-down down"></i>
             </li>
@@ -50,9 +62,12 @@ const Navbar = () => {
       </div>
 
       <div
-        onMouseLeave={() => setbrandDisplay("none")}
+        onMouseLeave={() => {
+          setbrandVisibility("none");
+          setbrandDisplay(0);
+        }}
         className="brand-drop"
-        style={{ display: brandDisplay }}
+        style={{ pointerEvents: brandVisibility, opacity: brandDisplay }}
       >
         <div className="container">
           <Link to="/nike" className="nike-logo">
@@ -309,8 +324,11 @@ const Navbar = () => {
 
       <div
         className="pricing-drop"
-        onMouseLeave={() => setpricingDisplay("none")}
-        style={{ display: pricingDisplay }}
+        onMouseLeave={() => {
+          setpricingDisplay(0);
+          setpricingVisibility("none");
+        }}
+        style={{ pointerEvents: pricingVisibility, opacity: pricingDisplay }}
       >
         <div className="container">
           <Link to="/stockX" className="nike-logo">

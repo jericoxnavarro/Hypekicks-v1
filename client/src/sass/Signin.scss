@@ -1,0 +1,122 @@
+$primary: #ffffff;
+$secondary: #043353;
+$secondary-light: #383c58;
+$content: #7de89d;
+$text: #b3c0cc;
+
+.main-signin {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .hypekicks-info {
+    height: 100%;
+    width: 40%;
+    background-color: $secondary;
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 50px;
+      .hype-name {
+        font-family: "futurabold_italic";
+        font-size: 80px;
+        text-decoration: none;
+        color: $content;
+        span {
+          font-family: "futuraextra_black";
+          color: $primary;
+          margin-right: 2 px;
+        }
+      }
+      .about-hypekicks {
+        font-size: 30px;
+        font-weight: 700;
+        color: $text;
+        width: 450px;
+      }
+    }
+  }
+  .hypekicks-signin {
+    height: 100%;
+    width: 60%;
+    background-color: $text;
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 100px;
+      .signin-form {
+        height: 70%;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .signin-bigtext {
+          font-weight: 900;
+          color: $secondary;
+          width: 70%;
+          margin-bottom: 20px;
+        }
+        label {
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          flex-direction: column;
+          width: 70%;
+          font-weight: 700;
+          font-size: 18px;
+          color: $secondary;
+        }
+        input {
+          padding: 5px 15px;
+          width: 100%;
+          height: 45px;
+          border-radius: 8px;
+          outline: none;
+          border: none;
+          margin-bottom: 20px;
+          margin-top: 10px;
+          background-color: $primary;
+          transition: 200ms ease-in;
+          font-size: 16px;
+
+          &:hover {
+            box-shadow: 0 0 0 3.8pt #0433535e;
+            border: 1px solid $text;
+            background-color: $primary;
+          }
+          &:focus {
+            box-shadow: 0 0 0 3.8pt #0433535e;
+            border: 1px solid $text;
+            background-color: $primary;
+          }
+        }
+        .submit {
+          width: 200px;
+          height: 60px;
+          outline: none;
+          border: none;
+          background-color: $content;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 20px;
+          color: $primary;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #7de89daf;
+          }
+        }
+        .btn-wrapper {
+          width: 70%;
+        }
+      }
+    }
+  }
+}

@@ -23,6 +23,27 @@ const Brands = ({ brand }) => {
         </>
       );
     } else {
+      const Check = ({ product }) => {
+        if (Object.keys(product.resellLinks).length >= 2) {
+          return (
+            <div key={product._id} className="box">
+              <Shoebox
+                shoeName={product.shoeName}
+                image={product.thumbnail}
+                price={product.retailPrice}
+                brand={product.brand}
+                _id={product._id}
+                styleID={product.styleID}
+                resellLinks={product.resellLinks}
+                description={product.description}
+                lowestResellPrice={product.lowestResellPrice}
+              />
+            </div>
+          );
+        } else {
+          return <></>;
+        }
+      };
       return (
         <>
           <Hero brands={brand} />
@@ -31,20 +52,7 @@ const Brands = ({ brand }) => {
               <h1 className="trending">Brands</h1>
               <div className="grid-main">
                 {products.map((product, index) => (
-                  <div key={product._id} className="box">
-                    <Shoebox
-                      shoeName={product.shoeName}
-                      image={product.thumbnail}
-                      price={product.lowestResellPrice.stockX}
-                      brand={product.brand}
-                      _id={product._id}
-                      styleID={product.styleID}
-                      resellLinks={product.resellLinks}
-                      description={product.description}
-                      lowestResellPrice={product.lowestResellPrice}
-                      index={index}
-                    />
-                  </div>
+                  <Check product={product} />
                 ))}
               </div>
             </div>

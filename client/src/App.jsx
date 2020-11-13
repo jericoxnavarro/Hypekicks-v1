@@ -7,6 +7,8 @@ import Home from "./components/Home/Home";
 import Brands from "./components/Brands/Brands";
 import Searchcontent from "./components/Search/Search";
 import Pricing from "./components/Pricing/Pricing";
+import Signin from "./components/User/Signin";
+import Signup from "./components/User/Signup";
 
 function App() {
   return (
@@ -58,6 +60,8 @@ function App() {
             path="/stadiumgoods"
             component={() => <Pricing pricing="stadiumGoods" />}
           />
+          <Route exact path="/sign-in" component={Signin} />
+          <Route exact path="/sign-up" component={Signup} />
         </Switch>
       </Router>
     </div>
