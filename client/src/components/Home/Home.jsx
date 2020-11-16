@@ -9,9 +9,9 @@ const Home = ({ brand }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const response = await fetch(`http://localhost:8080/home`);
+      const response = await fetch(`http://localhost:3001/api/popular`);
       const data = await response.json();
-      setProducts(data);
+      setProducts(data[0].sneakers);
     };
     getProducts();
   }, []);

@@ -9,7 +9,7 @@ const Navbar = () => {
   const [brandVisibility, setbrandVisibility] = useState("none");
   const [pricingDisplay, setpricingDisplay] = useState(0);
   const [pricingVisibility, setpricingVisibility] = useState("none");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState("Jerico");
 
   const Getuser = () => {
     if (user === "") {

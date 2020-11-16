@@ -1,107 +1,77 @@
 import React, { useState, useEffect } from "react";
 import "../sass/Shoebox.scss";
+import Links from "./Scripts/Imagelinks";
+import Brandlogo from "./Scripts/Brandlogo";
 
-const Shoebox = ({
-  shoeName,
-  image,
-  price,
-  brand,
-  _id,
-  styleID,
-  resellLinks,
-  description,
-  lowestResellPrice,
-  index,
-}) => {
-  let brandlogo;
-  if (brand === "Nike" || brand === "Jordan") {
-    brandlogo = "./icons/svg/nike.svg";
-  } else if (brand === "adidas") {
-    brandlogo = "./icons/svg/adidas.svg";
-  } else if (brand === "Vans") {
-    brandlogo = "./icons/svg/vans.svg";
-  } else if (brand === "Converse") {
-    brandlogo = "./icons/svg/converse.svg";
-  } else if (brand === "New Balance") {
-    brandlogo = "./icons/svg/newbalance.svg";
-  } else if (brand === "Reebok") {
-    brandlogo = "./icons/svg/reebok.svg";
-  }
-
+const Shoebox = ({ product }) => {
+  // Styles states
   const [infoboxDisplay, setinfoboxDisplay] = useState("none");
-  const setBlock = () => {
-    setinfoboxDisplay("block");
-  };
-
-  const setNone = () => {
-    setinfoboxDisplay("none");
-  };
-
-  const [stockxPrice, setStockxPrice] = useState("");
-  const [goatPrice, setGoatPrice] = useState("");
-  const [flightclubPrice, setFlightclubPrice] = useState("");
-  const [stadiumgoodsPrice, setStadiumgoodsPrice] = useState("");
-
-  useEffect(() => {
-    if (lowestResellPrice.stockX !== undefined) {
-      setStockxPrice(lowestResellPrice.stockX);
-    }
-    if (lowestResellPrice.goat !== undefined) {
-      setGoatPrice(lowestResellPrice.goat);
-    }
-    if (lowestResellPrice.flightClub !== undefined) {
-      setFlightclubPrice(lowestResellPrice.flightClub);
-    }
-    if (lowestResellPrice.stadiumGoods !== undefined) {
-      setStadiumgoodsPrice(lowestResellPrice.stadiumGoods);
-    }
-  }, []);
-
-  const [header, setHeader] = useState("/Lv2/img01.jpg");
-  const [images, setImages] = useState(image);
   const [visibilityBTN, setvisibilityBTN] = useState(1);
   const [pointerBTN, setpointerBTN] = useState("auto");
-  useEffect(() => {
-    const firstHeader = "https://stockx-360.imgix.net//";
-    const secondHeader = "/Images/";
 
-    const link = image;
-    const shoeNames = shoeName.replace("(", "").replace(")", "");
-    const getLastName = shoeNames.split(" ");
-    let lastName = getLastName[getLastName.length - 1];
-    if (!link.includes(lastName)) {
-      lastName = getLastName[getLastName.length - 2];
-    }
-    const getLink = link.substr(link.lastIndexOf("/") + 1);
-    const finalLink = link.substr(
-      link.lastIndexOf("/") + 1,
-      getLink.indexOf(lastName) + lastName.length
-    );
-    let Links = `${firstHeader}${finalLink}${secondHeader}${finalLink}${header}`;
+  // Function states
+  const [images, setImages] = useState(product.thumbnail);
+  const [link, setLink] = useState(0);
+  const imgLINKS = Links(product.thumbnail, product.shoeName);
+
+  useEffect(() => {
+    let Links = imgLINKS[link];
     setImages(Links);
     fetch(Links).then((res) => {
       if (res.status === 404) {
-        setImages(image);
+        setImages(product.thumbnail);
         setvisibilityBTN(0);
         setpointerBTN("none");
       }
     });
-  }, [header]);
+  }, [link]);
+
+  let buttons = [];
+  for (let i = 0; i <= 35; i++) {
+    buttons.push(
+      <button
+        key={i}
+        onMouseEnter={() => setLink(i)}
+        style={
+          link === i
+            ? {
+                borderRadius: "50%",
+                transform: "scale(2.1)",
+                backgroundColor: "#7de89d",
+                zIndex: "12",
+              }
+            : {
+                borderRadius: "0%",
+                transform: "scale(1)",
+                backgroundColor: "#043353",
+              }
+        }
+        className="circle-btn"
+      ></button>
+    );
+  }
 
   return (
     <>
-      <main id={_id} className="main-shoebox">
+      <main id={product._id} className="main-shoebox">
         <div className="image-box">
           <div className="brand">
-            <img src={brandlogo} className="brand-logo" alt={styleID} />
+            <img
+              src={Brandlogo(product.brand)}
+              className="brand-logo"
+              alt={product.brand}
+            />
           </div>
-          <img className="shoe" src={image} alt={styleID} />
+          <img className="shoe" src={product.thumbnail} alt={product.styleID} />
         </div>
         <div className="info-box">
-          <h2 className="shoe-name">{shoeName}</h2>
+          <h2 className="shoe-name">{product.shoeName}</h2>
           <div className="price-btn">
-            <h2 className="price">${stockxPrice}</h2>
-            <button onClick={setBlock} className="addbtn">
+            <h2 className="price">${product.lowestResellPrice.stockX}</h2>
+            <button
+              onClick={() => setinfoboxDisplay("block")}
+              className="addbtn"
+            >
               Add
             </button>
           </div>
@@ -111,164 +81,28 @@ const Shoebox = ({
       <div className="shoe-info-box" style={{ display: infoboxDisplay }}>
         <div className="info-box">
           <div className="shoe-images">
-            <img className="shoe" src={images} alt={styleID} />
-            <i onClick={setNone} className="fad fa-times-circle"></i>
+            <img className="shoe" src={images} alt={product.styleID} />
+            <i
+              onClick={() => setinfoboxDisplay("none")}
+              className="fad fa-times-circle"
+            ></i>
             <div
               style={{ opacity: visibilityBTN, pointerEvents: pointerBTN }}
               className="btns"
             >
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img01.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img01.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img02.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img03.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img04.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img05.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img06.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img07.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img08.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img09.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img10.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img11.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img12.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img13.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img14.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img15.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img16.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img17.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img18.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img19.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img20.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img21.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img22.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img23.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img24.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img25.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img26.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img27.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img28.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img29.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img30.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img31.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img32.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img33.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img34.jpg")}
-                className="circle-btn"
-              ></button>
-              <button
-                onMouseEnter={() => setHeader("/Lv2/img35.jpg")}
-                className="circle-btn"
-              ></button>
+              {buttons}
             </div>
           </div>
           <div className="shoe-infos">
-            <h1 className="shoename">{shoeName}</h1>
+            <h1 className="shoename">{product.shoeName}</h1>
             <button className="addfav-btn">Add Favorite</button>
             <div className="resellers">
               <div className="resellers-logo">
-                <a href={resellLinks.stockX}>
+                <a
+                  onClick={(e) => {
+                    window.open(`${product.resellLinks.stockX}`, "_blank");
+                  }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 235.82 106.49"
@@ -310,7 +144,11 @@ const Shoebox = ({
                     </g>
                   </svg>
                 </a>
-                <a href={resellLinks.goat}>
+                <a
+                  onClick={(e) => {
+                    window.open(`${product.resellLinks.goat}`, "_blank");
+                  }}
+                >
                   <svg
                     className="Logo__SvgLogo-sc-16hbji1-0 fcjFOZ"
                     width="368px"
@@ -330,7 +168,11 @@ const Shoebox = ({
                     </g>
                   </svg>
                 </a>
-                <a href={resellLinks.flightClub}>
+                <a
+                  onClick={(e) => {
+                    window.open(`${product.resellLinks.flightClub}`, "_blank");
+                  }}
+                >
                   <svg
                     width="126"
                     height="24"
@@ -354,7 +196,14 @@ const Shoebox = ({
                     <path d="M85.5749 0.0195312C83.6888 0.0195312 80.9471 0.353957 78.7888 3.79658C77.1166 6.47199 75.4443 15.3638 75.4443 17.8425C75.4443 23.0949 79.2749 23.4884 82.0166 23.4884C82.9693 23.4884 83.6499 23.39 83.8443 23.3507L85.0499 17.8425C84.5249 17.8818 83.3777 17.9212 82.5027 17.8622C80.4804 17.6851 80.6749 15.9343 80.9277 14.3999C81.1804 12.8851 81.686 10.5638 82.0943 9.08838C82.4249 7.90806 82.6971 6.76707 83.6888 5.96052C84.7388 5.11461 86.236 5.44904 87.4416 5.6851L88.6277 0.235925C87.9666 0.157236 86.761 0.0195312 85.5749 0.0195312Z" />
                   </svg>
                 </a>
-                <a href={resellLinks.stadiumGoods}>
+                <a
+                  onClick={(e) => {
+                    window.open(
+                      `${product.resellLinks.stadiumGoods}`,
+                      "_blank"
+                    );
+                  }}
+                >
                   <svg
                     id="Layer_1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -376,13 +225,13 @@ const Shoebox = ({
                 </a>
               </div>
               <div className="resellers-price">
-                <h2>${stockxPrice}</h2>
-                <h2>${goatPrice}</h2>
-                <h2>${flightclubPrice}</h2>
-                <h2>${stadiumgoodsPrice}</h2>
+                <h2>${product.lowestResellPrice.stockX}</h2>
+                <h2>${product.lowestResellPrice.goat}</h2>
+                <h2>${product.lowestResellPrice.flightClub}</h2>
+                <h2>${product.lowestResellPrice.stadiumGoods}</h2>
               </div>
             </div>
-            <p className="description">{description}</p>
+            <p className="description">{product.description}</p>
           </div>
         </div>
       </div>

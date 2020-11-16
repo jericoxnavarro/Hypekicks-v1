@@ -239,6 +239,7 @@ $text: #b3c0cc;
             height: 100%;
             width: 100%;
             margin-right: 20px;
+            cursor: pointer;
             svg {
               height: 100%;
               width: 100%;
@@ -268,7 +269,7 @@ $text: #b3c0cc;
             height: 100%;
             width: 100%;
             margin-right: 20px;
-            color: $text;
+            color: $content;
             font-size: 25px;
             font-style: italic;
 
@@ -280,6 +281,7 @@ $text: #b3c0cc;
       }
       .description {
         font-size: 16px;
+        color: $text;
       }
     }
   }

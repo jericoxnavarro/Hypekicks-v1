@@ -41,5 +41,29 @@ $text: #b3c0cc;
         grid-template-columns: 1fr 1fr 1fr;
       }
     }
+
+    .pagination {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .page-btn {
+        outline: none;
+        border: none;
+        height: 40px;
+        width: 40px;
+        background-color: $secondary;
+        color: $primary;
+        font-weight: 600;
+        margin: 0px 5px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $content;
+        }
+      }
+    }
   }
 }

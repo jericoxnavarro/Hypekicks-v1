@@ -4,57 +4,73 @@ import Shoebox from "../Shoebox";
 import Hero from "./Hero";
 import Preloader from "../Preloader";
 
-const Brands = ({ brand }) => {
+const Brands = ({ brand, id }) => {
   const [products, setProducts] = useState([]);
+  const [show, setShow] = useState([]);
+  const [currentpage, setCurrentpage] = useState(1);
+
   useEffect(() => {
     const getProducts = async () => {
-      const response = await fetch(`http://localhost:8080/search/${brand}`);
+      const response = await fetch(`http://localhost:3001/api/brands/${id}`);
       const data = await response.json();
-      setProducts(data);
+      setProducts(data.sneakers);
     };
     getProducts();
   }, [brand]);
 
+  useEffect(() => {
+    const boxperPage = 60;
+    const starting = currentpage * boxperPage - boxperPage;
+    const ending = currentpage * boxperPage;
+    const inShow = [];
+    for (let i = starting; i < ending; i++) {
+      if (products[i] === undefined) {
+        break;
+      } else {
+        inShow.push(products[i]);
+      }
+    }
+    setShow(inShow);
+  }, [currentpage, products]);
+
+  const paginationLength = products.length / 60;
+  let buttons = [];
+  for (let i = 0; i < Math.ceil(paginationLength); i++) {
+    buttons.push(
+      <button
+        key={i + 1}
+        onClick={() => setCurrentpage(i + 1)}
+        className="page-btn"
+      >
+        {i + 1}
+      </button>
+    );
+  }
+
   const renderBrands = () => {
-    if (products.length === 0) {
+    if (show.length === 0) {
       return (
         <>
           <Preloader brand={brand} />
         </>
       );
     } else {
-      const Check = ({ product }) => {
-        if (Object.keys(product.resellLinks).length >= 2) {
-          return (
-            <div key={product._id} className="box">
-              <Shoebox
-                shoeName={product.shoeName}
-                image={product.thumbnail}
-                price={product.retailPrice}
-                brand={product.brand}
-                _id={product._id}
-                styleID={product.styleID}
-                resellLinks={product.resellLinks}
-                description={product.description}
-                lowestResellPrice={product.lowestResellPrice}
-              />
-            </div>
-          );
-        } else {
-          return <></>;
-        }
-      };
       return (
         <>
           <Hero brands={brand} />
           <main className="main-content">
             <div className="container">
-              <h1 className="trending">Brands</h1>
+              <h1 className="trending">
+                Brands / {brand.charAt(0).toUpperCase() + brand.slice(1)}
+              </h1>
               <div className="grid-main">
-                {products.map((product, index) => (
-                  <Check product={product} />
+                {show.map((product) => (
+                  <div key={product._id} className="box">
+                    <Shoebox product={product} />
+                  </div>
                 ))}
               </div>
+              <div className="pagination">{buttons}</div>
             </div>
           </main>
         </>
