@@ -18,7 +18,9 @@ module.exports = {
             "sec-fetch-site": "cross-site",
           },
           body:
-            '{"params":"query=' + key + '&facets=*&filters=&hitsPerPage=100"}',
+            '{"params":"query=' +
+            key +
+            '&facets=*&filters=&hitsPerPage=20000"}',
           http2: true,
         }
       );
