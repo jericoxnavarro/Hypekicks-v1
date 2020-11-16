@@ -1,0 +1,36 @@
+{
+  "name": "hypekicks-backend",
+  "version": "1.0.0",
+  "description": "Backend for Hypekicks",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "sneakers",
+    "shoes",
+    "goat",
+    "stadium goods",
+    "flight club",
+    "stockx",
+    "restful",
+    "api",
+    "nodejs",
+    "hypekicks",
+    "nike",
+    "adidas"
+  ],
+  "author": "jericoxnavarro@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.14"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
