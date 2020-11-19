@@ -18,28 +18,33 @@ $text: #b3c0cc;
   flex-direction: column;
 
   .image-box {
-    height: 100%;
     width: 100%;
+    height: 60%;
     padding: 10px 20px;
     position: relative;
     background-color: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .shoe {
-      height: 100%;
-      width: 100%;
+      width: 90%;
+      height: 90%;
       user-drag: none;
       user-select: none;
       -moz-user-select: none;
       -webkit-user-drag: none;
       -webkit-user-select: none;
       -ms-user-select: none;
+      display: block;
     }
     .brand {
       position: absolute;
       height: 20%;
       width: 20%;
       right: 0;
-      margin-right: 15px;
-      margin-top: 5px;
+      top: 0;
+      margin-right: 20px;
+      margin-top: 20px;
 
       img {
         height: 100%;
@@ -55,22 +60,24 @@ $text: #b3c0cc;
     }
   }
   .info-box {
-    height: 55%;
+    height: 40%;
     width: 100%;
     background-color: $secondary;
     border-radius: 05 0%;
     padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
     .shoe-name {
       color: $text;
       font-size: 18px;
       width: 100%;
-      height: 30%;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
     .price-btn {
       width: 100%;
-      height: 80%;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -134,7 +141,7 @@ $text: #b3c0cc;
       width: 60%;
       background-color: $primary;
       position: relative;
-      padding: 30px;
+      padding: 30px 50px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -142,7 +149,13 @@ $text: #b3c0cc;
 
       .shoe {
         width: 100%;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
+        user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
       }
       i {
         font-size: 40px;

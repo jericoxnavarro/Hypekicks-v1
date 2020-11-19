@@ -72,7 +72,7 @@ const Shoebox = ({ product }) => {
               onClick={() => setinfoboxDisplay("block")}
               className="addbtn"
             >
-              Add
+              Check
             </button>
           </div>
         </div>

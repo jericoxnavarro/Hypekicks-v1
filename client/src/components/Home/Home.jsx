@@ -6,6 +6,8 @@ import Preloader from "../Preloader";
 
 const Home = ({ brand }) => {
   const [products, setProducts] = useState([]);
+  const [show, setShow] = useState([]);
+  const [currentpage, setCurrentpage] = useState(1);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -15,6 +17,35 @@ const Home = ({ brand }) => {
     };
     getProducts();
   }, []);
+
+  useEffect(() => {
+    const boxperPage = 60;
+    const starting = currentpage * boxperPage - boxperPage;
+    const ending = currentpage * boxperPage;
+    const inShow = [];
+    for (let i = starting; i < ending; i++) {
+      if (products[i] === undefined) {
+        break;
+      } else {
+        inShow.push(products[i]);
+      }
+    }
+    setShow(inShow);
+  }, [currentpage, products]);
+
+  const paginationLength = products.length / 60;
+  let buttons = [];
+  for (let i = 0; i < Math.ceil(paginationLength); i++) {
+    buttons.push(
+      <button
+        key={i + 1}
+        onClick={() => setCurrentpage(i + 1)}
+        className="page-btn"
+      >
+        {i + 1}
+      </button>
+    );
+  }
 
   const renderHome = () => {
     if (products.length === 0) {
@@ -27,22 +58,13 @@ const Home = ({ brand }) => {
             <div className="container">
               <h1 className="trending">Trending Now</h1>
               <div className="grid-main">
-                {products.map((product, index) => (
+                {show.map((product, index) => (
                   <div key={product._id} className="box">
-                    <Shoebox
-                      shoeName={product.shoeName}
-                      image={product.thumbnail}
-                      price={product.lowestResellPrice.stockX}
-                      brand={product.brand}
-                      _id={product._id}
-                      styleID={product.styleID}
-                      resellLinks={product.resellLinks}
-                      description={product.description}
-                      lowestResellPrice={product.lowestResellPrice}
-                    />
+                    <Shoebox product={product} />
                   </div>
                 ))}
               </div>
+              <div className="pagination">{buttons}</div>
             </div>
           </main>
         </>

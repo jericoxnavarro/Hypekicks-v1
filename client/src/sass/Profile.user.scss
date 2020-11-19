@@ -11,6 +11,11 @@ $text: #b3c0cc;
     height: 60%;
     background-color: $secondary;
   }
+  .fav {
+    height: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
   .container {
     .profile-info {
       height: 100%;
@@ -20,18 +25,18 @@ $text: #b3c0cc;
       align-items: center;
       padding-top: 100px;
       .profile-image {
-        width: 40%;
         display: flex;
-        height: 300px;
-        width: 300px;
+        height: 200px;
+        width: 200px;
         justify-content: flex-end;
         align-items: center;
         border-radius: 50%;
+        margin-left: 20px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
           0 10px 10px rgba(0, 0, 0, 0.22);
         .profile-pic {
-          height: 300px;
-          width: 300px;
+          height: 200px;
+          width: 200px;
           border-radius: 50%;
           box-shadow: 0 0 0 8pt #7de89da9;
 
@@ -76,6 +81,54 @@ $text: #b3c0cc;
           &:hover {
             color: #043353;
             background-color: #7de89d98;
+          }
+        }
+      }
+    }
+    .grid-main {
+      height: 100%;
+      width: 100%;
+      padding: 0px 150px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 5px;
+      row-gap: 5px;
+      padding-top: 30px;
+      padding-bottom: 40px;
+
+      .favorite-box {
+        height: 450px;
+        width: 400px;
+        padding: 20px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .main-shoebox {
+          height: 100%;
+          width: 100%;
+          cursor: pointer;
+          .image-box {
+            height: 70%;
+            .shoe {
+              width: 85%;
+            }
+          }
+          .info-box {
+            .price {
+              font-size: 35px;
+              color: $primary;
+              margin-left: 10px;
+              margin-right: 10px;
+            }
+            .from {
+              font-size: 15px;
+              color: $text;
+              margin-right: 10px;
+            }
+            .stockX-logo {
+              height: 35px;
+              fill: $content;
+            }
           }
         }
       }

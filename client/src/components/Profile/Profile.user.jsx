@@ -1,5 +1,6 @@
 import React from "react";
 import "../../sass/Profile.user.scss";
+import Favorites from "./Favorites.user";
 
 const Profile = () => {
   return (
@@ -22,6 +23,29 @@ const Profile = () => {
               </button>
             </div>
           </div>
+        </div>
+        <div className="container fav">
+          <div className="grid-main">
+            <div className="favorite-box">
+              <Favorites />
+            </div>
+            <div className="favorite-box">
+              <Favorites />
+            </div>
+            <div className="favorite-box">
+              <Favorites />
+            </div>
+            <div className="favorite-box">
+              <Favorites />
+            </div>
+            <div className="favorite-box">
+              <Favorites />
+            </div>
+            <div className="favorite-box">
+              <Favorites />
+            </div>
+          </div>
+          <div className="space"></div>
         </div>
       </main>
     </>
