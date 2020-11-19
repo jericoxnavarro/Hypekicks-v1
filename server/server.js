@@ -7,6 +7,8 @@ require("dotenv").config();
 //Routes
 const brandsRoute = require("./routes/Brands.routes");
 const popularRoute = require("./routes/Popular.routes");
+const userRoute = require("./routes/User.routes");
+const searchRoute = require("./routes/Search.routes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,14 +20,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use("/api", brandsRoute);
 app.use("/api", popularRoute);
+app.use("/api", userRoute);
+app.use("/api", searchRoute);
 
 // DB Connections
 const dbURI = process.env.dbURI;
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+};
+mongoose.Promise = global.Promise;
 mongoose
-  .connect(`${dbURI}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(`${dbURI}`, options)
   .then((res) => {
     console.log("Connected to", res.connections[0].name);
     // Server run after DB Connection is up
