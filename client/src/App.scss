@@ -146,9 +146,42 @@ body {
     width: 300px;
     top: 200px;
     fill: $secondary;
-    margin-right: 30px;
   }
+  .conversesvg {
+    height: 300px;
+    width: 700px;
+    top: 250px;
+  }
+  .newbalance-main {
+    width: 400px;
+  }
+  .reebok-main {
+    width: 400px;
+    .cls-1 {
+      stroke: $primary;
+      stroke-miterlimit: 10;
+      stroke-width: 0.09px;
+      fill-rule: evenodd;
+    }
+  }
+  .adidas {
+    margin-right: 20px;
+  }
+
   .lottie {
-    margin-bottom: 150px;
+    margin-bottom: 220px;
+  }
+  .brand-name {
+    height: 0px;
+    width: 0px;
+    font-family: "futurabold_italic";
+    font-size: 80px;
+    text-decoration: none;
+    color: $content;
+    span {
+      font-family: "futuraextra_black";
+      color: $secondary;
+      margin-right: 2 px;
+    }
   }
 }

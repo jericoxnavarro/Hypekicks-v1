@@ -225,10 +225,16 @@ const Shoebox = ({ product }) => {
                 </a>
               </div>
               <div className="resellers-price">
-                <h2>${product.lowestResellPrice.stockX}</h2>
-                <h2>${product.lowestResellPrice.goat}</h2>
-                <h2>${product.lowestResellPrice.flightClub}</h2>
-                <h2>${product.lowestResellPrice.stadiumGoods}</h2>
+                <h2 className="res-price">
+                  ${product.lowestResellPrice.stockX}
+                </h2>
+                <h2 className="res-price">${product.lowestResellPrice.goat}</h2>
+                <h2 className="res-price">
+                  ${product.lowestResellPrice.flightClub}
+                </h2>
+                <h2 className="res-price">
+                  ${product.lowestResellPrice.stadiumGoods}
+                </h2>
               </div>
             </div>
             <p className="description">{product.description}</p>

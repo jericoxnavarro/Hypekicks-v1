@@ -109,6 +109,7 @@ $text: #b3c0cc;
           cursor: pointer;
           .image-box {
             height: 70%;
+            width: 100%;
             .shoe {
               width: 85%;
             }
@@ -127,6 +128,21 @@ $text: #b3c0cc;
             }
             .stockX-logo {
               height: 35px;
+              fill: $content;
+            }
+            .goat-logo {
+              height: 25px;
+              width: 80px;
+              fill: $content;
+            }
+            .flightclub-logo {
+              height: 20px;
+              width: 80px;
+              fill: $content;
+            }
+            .stadiumgoods-logo {
+              height: 40px;
+              width: 80px;
               fill: $content;
             }
           }

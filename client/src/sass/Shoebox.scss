@@ -3,6 +3,7 @@ $secondary: #043353;
 $secondary-light: #383c58;
 $content: #7de89d;
 $text: #b3c0cc;
+$red: #e94553;
 
 .main-shoebox {
   background-color: $primary;
@@ -17,9 +18,19 @@ $text: #b3c0cc;
   align-items: center;
   flex-direction: column;
 
+  &:hover {
+    .image-box {
+      .brand {
+        .brand-logo {
+          fill: $content;
+        }
+      }
+    }
+  }
+
   .image-box {
     width: 100%;
-    height: 60%;
+    height: 70%;
     padding: 10px 20px;
     position: relative;
     background-color: $primary;
@@ -45,8 +56,11 @@ $text: #b3c0cc;
       top: 0;
       margin-right: 20px;
       margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      img {
+      .brand-logo {
         height: 100%;
         width: 100%;
         fill: $secondary;
@@ -56,6 +70,26 @@ $text: #b3c0cc;
         -webkit-user-drag: none;
         -webkit-user-select: none;
         -ms-user-select: none;
+      }
+      .vans {
+        height: 82%;
+        width: 82%;
+      }
+      .adidas {
+        height: 85%;
+        width: 85%;
+      }
+      .converse {
+        height: 100%;
+        width: 100%;
+      }
+      .reebok {
+        .cls-1 {
+          stroke: $primary;
+          stroke-miterlimit: 10;
+          stroke-width: 0.09px;
+          fill-rule: evenodd;
+        }
       }
     }
   }
@@ -146,7 +180,44 @@ $text: #b3c0cc;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      .brand-main {
+        position: absolute;
+        bottom: 30px;
+        width: 100px;
+        height: 80px;
 
+        .brand-logo {
+          height: 100%;
+          width: 100%;
+          fill: $secondary;
+          user-drag: none;
+          user-select: none;
+          -moz-user-select: none;
+          -webkit-user-drag: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+        }
+        .vans {
+          height: 82%;
+          width: 82%;
+        }
+        .adidas {
+          height: 85%;
+          width: 85%;
+        }
+        .converse {
+          height: 100%;
+          width: 100%;
+        }
+        .reebok {
+          .cls-1 {
+            stroke: $primary;
+            stroke-miterlimit: 10;
+            stroke-width: 0.09px;
+            fill-rule: evenodd;
+          }
+        }
+      }
       .shoe {
         width: 100%;
         margin-bottom: 40px;
@@ -235,6 +306,13 @@ $text: #b3c0cc;
           color: $content;
         }
       }
+      .remove {
+        background-color: $red;
+
+        &:hover {
+          color: $primary;
+        }
+      }
 
       .resellers {
         width: 100%;
@@ -280,7 +358,6 @@ $text: #b3c0cc;
 
           h2 {
             height: 100%;
-            width: 100%;
             margin-right: 20px;
             color: $content;
             font-size: 25px;
@@ -290,11 +367,54 @@ $text: #b3c0cc;
               margin-right: 0px;
             }
           }
+          .res-price {
+            width: 100%;
+          }
+          .price-fav {
+            font-size: 40px;
+            margin-right: 15px;
+            color: $secondary;
+          }
+          .from {
+            font-weight: 500;
+            color: $text;
+            margin-right: 15px;
+          }
+        }
+        .fav {
+          height: 100%;
+          width: 100%;
+          align-items: center;
+
+          .stockX-logo {
+            height: 100%;
+            fill: $content;
+          }
+          .goat-logo {
+            height: 100%;
+            width: 100px;
+            fill: $content;
+          }
+          .flightclub-logo {
+            height: 100%;
+            width: 80px;
+            fill: $content;
+          }
+          .stadiumgoods-logo {
+            height: 100%;
+            width: 80px;
+            fill: $content;
+          }
         }
       }
       .description {
         font-size: 16px;
         color: $text;
+      }
+      .fav-des {
+        margin-top: 15px;
+        color: $secondary-light;
+        font-size: 18px;
       }
     }
   }

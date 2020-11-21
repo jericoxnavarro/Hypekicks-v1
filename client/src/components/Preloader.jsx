@@ -36,7 +36,7 @@ const Preloader = ({ brand }) => {
     } else if (brand === "adidas") {
       return (
         <svg
-          className="svg-loader"
+          className="svg-loader adidas"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 355.73 236.69"
         >
@@ -230,7 +230,13 @@ const Preloader = ({ brand }) => {
         </svg>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          <h1 className="svg-loader brand-name">
+            <span>HYPE</span>KICKS
+          </h1>
+        </>
+      );
     }
   };
   return (

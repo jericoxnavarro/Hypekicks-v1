@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../sass/Profile.user.scss";
 import Favorites from "./Favorites.user";
 
 const Profile = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const getProducts = async () => {
+      const response = await fetch(
+        `http://localhost:3001/api/user/5fb521870cc05701769387c5`
+      );
+      const data = await response.json();
+      setProducts(data.favorites);
+    };
+    getProducts();
+  }, []);
+
   return (
     <>
       <main className="main-profile">
@@ -26,24 +38,11 @@ const Profile = () => {
         </div>
         <div className="container fav">
           <div className="grid-main">
-            <div className="favorite-box">
-              <Favorites />
-            </div>
-            <div className="favorite-box">
-              <Favorites />
-            </div>
-            <div className="favorite-box">
-              <Favorites />
-            </div>
-            <div className="favorite-box">
-              <Favorites />
-            </div>
-            <div className="favorite-box">
-              <Favorites />
-            </div>
-            <div className="favorite-box">
-              <Favorites />
-            </div>
+            {products.map((product) => (
+              <div className="favorite-box">
+                <Favorites product={product} />
+              </div>
+            ))}
           </div>
           <div className="space"></div>
         </div>
