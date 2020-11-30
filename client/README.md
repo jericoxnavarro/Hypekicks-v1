@@ -31,12 +31,10 @@ The Hypekicks is a React website that allows users to search sneakers, get produ
 ## About The Project :chicken:
 
   <p align="center">
-
-    <img src="public/Hypekicks-image1.png" alt="Logo" width="100%" height="50%">
-    <img src="public/Hypekicks-image2.PNG" alt="Logo" width="100%" height="50%">
-    <img src="public/Hypekicks-image3.PNG" alt="Logo" width="100%" height="50%">
-
-</p>
+<img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image1.png" alt="Logo" width="100%" height="50%">
+    <img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image2.PNG" alt="Logo" width="100%" height="50%">
+    <img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image3.PNG" alt="Logo" width="100%" height="50%">
+  </p>
 
 ### Built With :fire:
 
