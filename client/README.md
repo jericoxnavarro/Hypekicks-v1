@@ -4,7 +4,7 @@
 
   <h3 align="center">:zap:Hypekicks:zap:</h3>
 </p>
-The [Hypekicks](https://github.com/jericoxnavarro/Hypekciks-web) is a React website that allows users to search sneakers, get product information and compare prices from StockX, Flight Club, Goat and Stadium Goods.
+The Hypekicks is a React website that allows users to search sneakers, get product information and compare prices from StockX, Flight Club, Goat and Stadium Goods.
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents:rocket:</summary>
