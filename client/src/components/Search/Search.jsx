@@ -9,7 +9,9 @@ const Search = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const response = await fetch(`http://localhost:8080/search/${query}`);
+      const response = await fetch(
+        `https://hypekicks-api.herokuapp.com/search/${query}`
+      );
       const data = await response.json();
       setProducts(data);
     };

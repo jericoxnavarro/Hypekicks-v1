@@ -3,6 +3,7 @@ import Homehero from "./Hero";
 import "../../sass/Content.scss";
 import Shoebox from "../Shoebox";
 import Preloader from "../Preloader";
+import Footer from "../Footer";
 
 const Home = ({ brand }) => {
   const [products, setProducts] = useState([]);
@@ -11,7 +12,9 @@ const Home = ({ brand }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const response = await fetch(`http://localhost:3001/api/popular`);
+      const response = await fetch(
+        `https://hypekicks-api.herokuapp.com/api/popular`
+      );
       const data = await response.json();
       setProducts(data[0].sneakers);
     };
@@ -66,6 +69,7 @@ const Home = ({ brand }) => {
               </div>
               <div className="pagination">{buttons}</div>
             </div>
+            <Footer />
           </main>
         </>
       );

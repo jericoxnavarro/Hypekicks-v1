@@ -10,6 +10,7 @@ import Pricing from "./components/Pricing/Pricing";
 import Signin from "./components/User/Signin";
 import Signup from "./components/User/Signup";
 import Profile from "./components/Profile/Profile.user";
+import Page404 from "./components/404";
 
 function App() {
   return (
@@ -84,6 +85,7 @@ function App() {
           <Route exact path="/sign-in" component={Signin} />
           <Route exact path="/sign-up" component={Signup} />
           <Route exact path="/profile" component={Profile} />
+          <Route component={Page404} />
         </Switch>
       </Router>
     </div>

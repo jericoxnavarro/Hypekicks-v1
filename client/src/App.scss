@@ -172,16 +172,17 @@ body {
     margin-bottom: 220px;
   }
   .brand-name {
-    height: 0px;
-    width: 0px;
+    width: auto;
+    height: 100px;
     font-family: "futurabold_italic";
-    font-size: 80px;
+    font-size: 100px;
+    top: 350px;
     text-decoration: none;
     color: $content;
     span {
       font-family: "futuraextra_black";
       color: $secondary;
-      margin-right: 2 px;
+      margin-right: 10px;
     }
   }
 }

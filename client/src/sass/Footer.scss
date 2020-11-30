@@ -1,0 +1,45 @@
+$primary: #ffffff;
+$secondary: #043353;
+$secondary-light: #383c58;
+$content: #7de89d;
+$text: #b3c0cc;
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background-color: $secondary;
+
+  .container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 50px;
+    .info-box-footer {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      .hype-name {
+        font-family: "futurabold_italic";
+        font-size: 40px;
+        text-decoration: none;
+        color: $content;
+        span {
+          font-family: "futuraextra_black";
+          color: $primary;
+          margin-right: 2 px;
+        }
+      }
+      .about-hypekicks {
+        font-size: 15px;
+        font-weight: 700;
+        color: $text;
+        width: 450px;
+      }
+    }
+  }
+}

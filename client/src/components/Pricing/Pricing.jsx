@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../sass/Search.scss";
 import Pricingbox from "./Pricingbox";
 import Mainlogo from "./Mainlogo";
+import Footer from "../Footer";
 
 const FlightClub = ({ pricing }) => {
   const [products, setProducts] = useState([]);
@@ -10,7 +11,9 @@ const FlightClub = ({ pricing }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const response = await fetch(`http://localhost:8080/search/${query}`);
+      const response = await fetch(
+        `https://hypekicks-api.herokuapp.com/search/${query}`
+      );
       const data = await response.json();
       setProducts(data);
     };
@@ -74,6 +77,7 @@ const FlightClub = ({ pricing }) => {
             ))}
           </div>
         </div>
+        <Footer />
       </main>
     </>
   );
