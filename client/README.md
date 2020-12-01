@@ -1,24 +1,10 @@
-# Hypekicks
-
-The [Hypekicks](https://github.com/jericoxnavarro/Hypekciks-web) is a React website that allows users to search sneakers, get product information and compare prices from StockX, Flight Club, Goat and Stadium Goods.
-
-## Demo
-
-<img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image1.png" width=900 align=left>
-<img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image2.PNG" width=900 align=left>
-<img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image3.PNG" width=900 align=left>
-
 <br />
 <p align="center">
-    <img src="public/logo.png" alt="Logo" width="200" height="80">
+    <img src="public/logo.png" alt="Logo" width="250" height="80">
 
   <h3 align="center">:zap:Hypekicks:zap:</h3>
-
-  <p align="center">
-    The [Hypekicks](https://github.com/jericoxnavarro/Hypekciks-web) is a React website that allows users to search sneakers, get product information and compare prices from StockX, Flight Club, Goat and Stadium Goods.
-  </p>
 </p>
-
+The Hypekicks is a React website that allows users to search sneakers, get product information and compare prices from StockX, Flight Club, Goat and Stadium Goods.
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents:rocket:</summary>
@@ -45,12 +31,10 @@ The [Hypekicks](https://github.com/jericoxnavarro/Hypekciks-web) is a React webs
 ## About The Project :chicken:
 
   <p align="center">
-
-    <img src="public/Hypekicks-image1.png" alt="Logo" width="100%" height="50%">
-    <img src="public/Hypekicks-image2.PNG" alt="Logo" width="100%" height="50%">
-    <img src="public/Hypekicks-image3.PNG" alt="Logo" width="100%" height="50%">
-
-</p>
+<img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image1.png" alt="Logo" width="100%" height="50%">
+    <img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image2.PNG" alt="Logo" width="100%" height="50%">
+    <img src="https://github.com/jericoxnavarro/Hypekciks-web/blob/main/client/public/Hypekicks-image3.PNG" alt="Logo" width="100%" height="50%">
+  </p>
 
 ### Built With :fire:
 
