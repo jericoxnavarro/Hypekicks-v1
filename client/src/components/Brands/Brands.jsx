@@ -13,7 +13,7 @@ const Brands = ({ brand, id }) => {
   useEffect(() => {
     const getProducts = async () => {
       const response = await fetch(
-        `https://hypekicks-api.herokuapp.com/api/brands/${id}`
+        `${process.env.REACT_APP_API_URI}/api/brands/${id}`
       );
       const data = await response.json();
       setProducts(data.sneakers);
