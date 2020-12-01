@@ -7,7 +7,7 @@ const Profile = () => {
   useEffect(() => {
     const getProducts = async () => {
       const response = await fetch(
-        `https://hypekicks-api.herokuapp.com/api/user/5fb521870cc05701769387c5`
+        `${process.env.REACT_APP_API_URI}/api/user/5fb521870cc05701769387c5`
       );
       const data = await response.json();
       setProducts(data.favorites);

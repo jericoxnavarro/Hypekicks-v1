@@ -12,7 +12,7 @@ const FlightClub = ({ pricing }) => {
   useEffect(() => {
     const getProducts = async () => {
       const response = await fetch(
-        `https://hypekicks-api.herokuapp.com/search/${query}`
+        `${process.env.REACT_APP_API_URI}/search/${query}`
       );
       const data = await response.json();
       setProducts(data);
@@ -55,7 +55,7 @@ const FlightClub = ({ pricing }) => {
       </main>
 
       <main className="main-content">
-        <div className="container">
+        <div className="container push">
           <h1 className="search-heading">{query}</h1>
           <p className="search-text">Top Result of {query}</p>
           <div className="grid-main-pricing">

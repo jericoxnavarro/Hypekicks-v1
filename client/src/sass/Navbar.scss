@@ -7,7 +7,7 @@ $content: #7de89d;
   max-width: 100%;
   height: 100px;
   position: fixed;
-  background-color: $primary;
+  background-color: $secondary;
   z-index: 10;
 
   .container {
@@ -26,7 +26,7 @@ $content: #7de89d;
         width: 200px;
         span {
           font-family: "futuraextra_black";
-          color: $secondary;
+          color: $primary;
           margin-right: 2 px;
         }
       }
@@ -37,7 +37,7 @@ $content: #7de89d;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: $secondary;
+        color: $primary;
 
         .nav-item {
           display: flex;
@@ -63,7 +63,7 @@ $content: #7de89d;
 
           a {
             text-decoration: none;
-            color: $secondary;
+            color: $primary;
           }
         }
         .brand {
@@ -100,6 +100,7 @@ $content: #7de89d;
         .user-fname {
           font-size: 20px;
           font-weight: 700;
+          color: $primary;
         }
 
         .sign-in {
@@ -129,12 +130,6 @@ $content: #7de89d;
 
           &:hover {
             transform: scale(1.04);
-          }
-        }
-
-        &:hover {
-          .profile-pic {
-            box-shadow: 0 0 0 3.5pt #04335385;
           }
         }
       }
