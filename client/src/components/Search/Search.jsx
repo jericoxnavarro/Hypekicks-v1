@@ -302,7 +302,7 @@ const Search = () => {
         </div>
       </main>
 
-      <main className="main-content">
+      <main className="main-content-search">
         <div className="container">
           <h1 className="search-heading">{query}</h1>
           <p className="search-text">Top Result of {query}</p>
