@@ -10,8 +10,7 @@ $text: #b3c0cc;
 
   .container {
     height: auto;
-    padding-top: 30px;
-    padding-bottom: 40px;
+    padding: 40px 120px;
 
     .trending {
       font-weight: 900;
@@ -20,25 +19,40 @@ $text: #b3c0cc;
     }
 
     .grid-main {
-      height: 100%;
+      height: 200%;
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       column-gap: 20px;
       row-gap: 20px;
-      padding-top: 30px;
-      padding-bottom: 40px;
 
       .box {
-        height: 450px;
         padding: 20px 10px;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-
-      @media screen and (max-width: 1264px) {
+      @media screen and (max-width: 1900px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      @media screen and (max-width: 1700px) {
         grid-template-columns: 1fr 1fr 1fr;
+      }
+      @media screen and (max-width: 992px) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        padding: 40px 60px;
+      }
+      @media screen and (max-width: 576px) {
+        padding: 40px 20px;
+      }
+      @media screen and (max-width: 428px) {
+        padding: 40px 10px;
+      }
+      @media screen and (max-width: 324px) {
+        padding: 20px 10px;
       }
     }
 
@@ -64,6 +78,25 @@ $text: #b3c0cc;
           background-color: $content;
         }
       }
+    }
+
+    @media screen and (max-width: 1900px) {
+      padding: 40px 100px;
+    }
+    @media screen and (max-width: 1200px) {
+      padding: 40px 80px;
+    }
+    @media screen and (max-width: 992px) {
+      padding: 40px 60px;
+    }
+    @media screen and (max-width: 768px) {
+      padding: 40px 40px;
+    }
+    @media screen and (max-width: 576px) {
+      padding: 40px 60px;
+    }
+    @media screen and (max-width: 428px) {
+      padding: 40px 20px;
     }
   }
 }
