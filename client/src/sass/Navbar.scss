@@ -45,8 +45,8 @@ $content: #7de89d;
           align-items: center;
           width: 100px;
           height: 100%;
-          font-weight: 500;
-          font-size: 17px;
+          font-weight: 600;
+          font-size: 20px;
           margin-right: 20px;
           &:last-child {
             margin-right: 0px;
@@ -304,6 +304,47 @@ $content: #7de89d;
       }
       a:last-child {
         margin-right: 10px;
+      }
+    }
+  }
+}
+
+.mobile {
+  .container {
+    padding: 5px 10px;
+    .navbar {
+      .bars {
+        font-size: 40px;
+        color: $primary;
+        margin-left: auto;
+        cursor: pointer;
+        transition: 200ms ease-in-out;
+        width: 50px;
+
+        &:hover {
+          color: $content;
+          transform: scale(1.11);
+        }
+      }
+
+      .brand-name {
+        margin-left: 90px !important;
+        text-align: center;
+      }
+      .push {
+        margin-left: auto;
+      }
+      .slider-nav {
+        z-index: -1;
+        position: fixed;
+        height: 95%;
+        width: 50%;
+        top: 0;
+        right: 0;
+        background-color: $primary;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        transition: 200ms;
       }
     }
   }
