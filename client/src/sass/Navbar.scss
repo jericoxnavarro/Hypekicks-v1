@@ -1,6 +1,8 @@
 $primary: #ffffff;
 $secondary: #043353;
+$secondary-light: #383c58;
 $content: #7de89d;
+$text: #b3c0cc;
 
 .main-nav {
   width: 100%;
@@ -311,15 +313,17 @@ $content: #7de89d;
 
 .mobile {
   .container {
-    padding: 5px 10px;
+    padding: 5px 5px;
     .navbar {
       .bars {
-        font-size: 40px;
+        text-align: right;
+        font-size: 30px;
         color: $primary;
         margin-left: auto;
         cursor: pointer;
         transition: 200ms ease-in-out;
         width: 50px;
+        padding-right: 10px;
 
         &:hover {
           color: $content;
@@ -328,23 +332,124 @@ $content: #7de89d;
       }
 
       .brand-name {
-        margin-left: 90px !important;
+        font-size: 25px;
+        margin: 0px;
         text-align: center;
       }
       .push {
+        width: 50px;
         margin-left: auto;
       }
       .slider-nav {
         z-index: -1;
         position: fixed;
         height: 95%;
-        width: 50%;
+        width: 80%;
         top: 0;
         right: 0;
-        background-color: $primary;
+        background-color: $secondary;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
           0 10px 10px rgba(0, 0, 0, 0.22);
         transition: 200ms;
+
+        .mobile-con {
+          width: 100%;
+          height: 100%;
+          padding: 30px;
+
+          .mobile-nav-items {
+            height: 100%;
+            width: 100%;
+            list-style: none;
+            transition: 200ms ease-in;
+            .mobile-nav-item {
+              width: 100%;
+              height: 60px;
+              margin: 10px 0px;
+              overflow: hidden;
+              border-radius: 20px;
+              transition: 200ms ease-in;
+
+              .mobile-link {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                color: $primary;
+                text-decoration: none;
+                font-weight: 800;
+                font-size: 18px;
+                padding: 10px 30px;
+
+                &:hover {
+                  background-color: $content;
+                  .converse {
+                    .cls-1 {
+                      fill: $content;
+                    }
+                  }
+                }
+                i {
+                  margin-left: auto;
+                  font-size: 20px;
+                  color: $primary;
+                }
+                .nav-logo {
+                  height: 40px;
+                  width: 40px;
+                  fill: $primary;
+                }
+                .converse {
+                  height: 65px;
+                  width: 65px;
+                  .cls-1 {
+                    fill: $secondary;
+                  }
+                  .cls-1,
+                  .cls-2 {
+                    fill-rule: evenodd;
+                  }
+                }
+                .reebok {
+                  height: 65px;
+                  width: 65px;
+                  .cls-1 {
+                    stroke: #141715;
+                    stroke-miterlimit: 10;
+                    stroke-width: 0.09px;
+                    fill-rule: evenodd;
+                  }
+                }
+                .newbalance {
+                  height: 55px;
+                  width: 55px;
+                  .cls-1 {
+                    fill-rule: evenodd;
+                  }
+                }
+                .down {
+                  font-size: 25px;
+                  transition: 200ms ease-in;
+                }
+              }
+            }
+            .drop-down {
+              margin-right: 30px;
+              margin-left: 30px;
+              padding: 0px 10px;
+              border-radius: 20px;
+              transition: 200ms ease-in;
+              border-left: 1px solid $text;
+              border-radius: 0px;
+              .mobile-nav-item {
+                .mobile-link {
+                  justify-content: center;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
