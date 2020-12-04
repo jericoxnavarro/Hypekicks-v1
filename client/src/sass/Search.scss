@@ -164,7 +164,7 @@ $text: #b3c0cc;
     }
 
     .grid-main {
-      height: 200%;
+      height: 100%;
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -176,19 +176,75 @@ $text: #b3c0cc;
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 600px;
+        font-size: 50px;
+        @media screen and (max-width: 2150px) {
+          height: 480px;
+          font-size: 40px;
+        }
+        @media screen and (max-width: 1800px) {
+          font-size: 38px;
+          height: 450px;
+        }
+        @media screen and (max-width: 1400px) {
+          font-size: 36px;
+          height: 420px;
+        }
+        @media screen and (max-width: 1200px) {
+          font-size: 33px;
+          height: 400px;
+        }
+        @media screen and (max-width: 1050px) {
+          font-size: 28px;
+          height: 350px;
+        }
+        @media screen and (max-width: 992px) {
+          font-size: 35px;
+          height: 450px;
+        }
+        @media screen and (max-width: 850px) {
+          font-size: 30px;
+          height: 400px;
+        }
+        @media screen and (max-width: 768px) {
+          font-size: 45px;
+          height: 550px;
+        }
+        @media screen and (max-width: 600px) {
+          font-size: 40px;
+          height: 500px;
+        }
+        @media screen and (max-width: 500px) {
+          height: 400px;
+          font-size: 30px;
+        }
+        @media screen and (max-width: 400px) {
+          height: 350px;
+          font-size: 28px;
+        }
+        @media screen and (max-width: 300px) {
+          height: 350px;
+          font-size: 25px;
+        }
       }
       @media screen and (max-width: 1900px) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
       }
-      @media screen and (max-width: 1200px) {
+      @media screen and (max-width: 1700px) {
         grid-template-columns: 1fr 1fr 1fr;
       }
       @media screen and (max-width: 992px) {
         grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 0px;
       }
       @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
-        padding: 40px 60px;
+        padding: 40px 90px;
+      }
+      @media screen and (max-width: 668px) {
+        grid-template-columns: 1fr;
+        padding: 40px 50px;
       }
       @media screen and (max-width: 576px) {
         padding: 40px 20px;
