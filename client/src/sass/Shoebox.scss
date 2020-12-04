@@ -161,17 +161,131 @@ $red: #e94553;
   position: fixed;
   background-color: #383c5875;
   z-index: 11;
-  padding: 50px 180px;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0px;
 
   .info-box {
     height: 100%;
-    width: 100%;
+    width: 80%;
     background-color: $primary;
     border-radius: 50px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 55px;
+    margin: 50px;
+
+    @media screen and (max-width: 2150px) {
+      width: 85%;
+      font-size: 50px;
+    }
+    @media screen and (max-width: 1800px) {
+      font-size: 45px;
+      .circle-btn {
+        height: 1.3em !important;
+        width: 1.3em !important;
+      }
+    }
+    @media screen and (max-width: 1600px) {
+      width: 90%;
+      font-size: 38px;
+    }
+    @media screen and (max-width: 1500px) {
+      width: 90%;
+      font-size: 35px;
+      height: 80%;
+      .circle-btn {
+        height: 1.1em !important;
+        width: 1.1em !important;
+      }
+    }
+    @media screen and (max-width: 1300px) {
+      width: 95%;
+      font-size: 35px;
+    }
+    @media screen and (max-width: 1250px) {
+      width: 100%;
+      font-size: 33px;
+      .circle-btn {
+        height: 0.9em !important;
+        width: 0.9em !important;
+      }
+    }
+    @media screen and (max-width: 1050px) {
+      flex-direction: column;
+      font-size: 30px;
+      height: 100%;
+      .shoe-images {
+        width: 100% !important;
+        height: 45% !important;
+        .shoe {
+          height: 100% !important;
+          width: 70% !important;
+        }
+      }
+      .shoe-infos {
+        width: 100% !important;
+        height: 55% !important;
+      }
+    }
+    @media screen and (max-width: 992px) {
+      font-size: 27px;
+      .shoe-images {
+        .shoe {
+          height: 80% !important;
+          width: 80% !important;
+        }
+      }
+    }
+    @media screen and (max-width: 850px) {
+      font-size: 25px;
+      margin: 0px 30px;
+      .circle-btn {
+        height: 0.7em !important;
+        width: 0.7em !important;
+        margin-bottom: 0px !important;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 23px;
+      .shoe-images {
+        .shoe {
+          height: 80% !important;
+          width: 90% !important;
+        }
+      }
+    }
+    @media screen and (max-width: 600px) {
+      font-size: 22px;
+      .shoe-images {
+        .shoe {
+          height: 70% !important;
+          width: 90% !important;
+        }
+      }
+    }
+    @media screen and (max-width: 500px) {
+      width: 100%;
+      font-size: 20px;
+      margin: 0px 10px;
+      .shoe-images {
+        .shoe {
+          height: 70% !important;
+          width: 100% !important;
+          margin-bottom: 0px !important;
+        }
+        .circle-btn {
+          height: 0.6em !important;
+          width: 0.6em !important;
+        }
+      }
+    }
+    @media screen and (max-width: 400px) {
+    }
+    @media screen and (max-width: 300px) {
+    }
 
     .shoe-images {
       height: 100%;
@@ -223,6 +337,7 @@ $red: #e94553;
       }
       .shoe {
         width: 100%;
+        height: 65%;
         margin-bottom: 40px;
         user-drag: none;
         user-select: none;
@@ -255,8 +370,8 @@ $red: #e94553;
           0 10px 10px rgba(0, 0, 0, 0.22);
         border-radius: 20px;
         .circle-btn {
-          height: 15px;
-          width: 15px;
+          height: 1.5em;
+          width: 1.5em;
           border: none;
           outline: none;
           background-color: $secondary;
@@ -278,7 +393,7 @@ $red: #e94553;
     .shoe-infos {
       height: 100%;
       width: 45%;
-      padding: 45px;
+      padding: 30px 60px;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -287,18 +402,18 @@ $red: #e94553;
 
       .shoename {
         font-family: "futurabold_italic";
-        font-size: 40px;
+        font-size: 1.25em;
         color: $primary;
         margin-bottom: 25px;
       }
       .addfav-btn {
-        height: 70px;
-        width: 70%;
+        height: 3.5em;
+        width: 60%;
         border-radius: 30px;
         outline: none;
         border: none;
         font-weight: 900;
-        font-size: 22px;
+        font-size: 0.5em;
         margin-bottom: 30px;
         color: $primary;
         background-color: $content;
@@ -361,10 +476,9 @@ $red: #e94553;
           padding-left: 0px;
 
           h2 {
-            height: 100%;
             margin-right: 20px;
             color: $content;
-            font-size: 25px;
+            font-size: 0.6em;
             font-style: italic;
 
             &:last-child {
@@ -412,7 +526,7 @@ $red: #e94553;
         }
       }
       .description {
-        font-size: 18px;
+        font-size: 0.4em;
         color: $text;
       }
       .fav-des {
