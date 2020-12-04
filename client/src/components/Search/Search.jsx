@@ -5,12 +5,13 @@ import Shoebox from "../Shoebox";
 const Search = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("Search");
+  const [query, setQuery] = useState();
 
   useEffect(() => {
+    setProducts([]);
     const getProducts = async () => {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URI}/search/${query}`
+        `http://localhost:3002/api/search?query=${query}`
       );
       const data = await response.json();
       setProducts(data);
@@ -309,18 +310,7 @@ const Search = () => {
           <div className="grid-main">
             {products.map((product, index) => (
               <div className="box">
-                <Shoebox
-                  shoeName={product.shoeName}
-                  image={product.thumbnail}
-                  price={product.retailPrice}
-                  brand={product.brand}
-                  _id={product._id}
-                  styleID={product.styleID}
-                  resellLinks={product.resellLinks}
-                  description={product.description}
-                  lowestResellPrice={product.lowestResellPrice}
-                  key={index}
-                />
+                <Shoebox product={product} key={index} />
               </div>
             ))}
           </div>
