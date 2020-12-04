@@ -69,7 +69,7 @@ const Shoebox = ({ product }) => {
           <div className="price-btn">
             <h2 className="price">${product.lowestResellPrice.stockX}</h2>
             <button
-              onClick={() => setinfoboxDisplay("block")}
+              onClick={() => setinfoboxDisplay("flex")}
               className="addbtn"
             >
               Check
@@ -99,6 +99,7 @@ const Shoebox = ({ product }) => {
             <div className="resellers">
               <div className="resellers-logo">
                 <a
+                  href=""
                   onClick={(e) => {
                     window.open(`${product.resellLinks.stockX}`, "_blank");
                   }}
