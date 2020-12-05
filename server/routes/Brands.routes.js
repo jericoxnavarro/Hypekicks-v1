@@ -16,7 +16,32 @@ router.get("/brands", async (req, res) => {
 router.get("/brands/:brandId", async (req, res) => {
   try {
     const brand = await Brands.findById(req.params.brandId);
-    res.json(brand);
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const pageLength = Math.ceil(brand.sneakers.length / limit);
+    const resultBrands = brand.sneakers.slice(startIndex, endIndex);
+    if (page > pageLength) {
+      res.json({
+        message: `Sorry, the page you're looking for doesn't exist.`,
+        data: false,
+      });
+    } else if (page < 1) {
+      res.json({
+        message: `Sorry, the page you're looking for doesn't exist.`,
+        data: false,
+      });
+    } else {
+      res.json({
+        pageLength: pageLength,
+        next: page + 1,
+        previous: page - 1,
+        limit: limit,
+        data: resultBrands,
+      });
+    }
   } catch (err) {
     res.json({ message: err });
   }
