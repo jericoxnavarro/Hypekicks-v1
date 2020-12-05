@@ -5,19 +5,20 @@ import Shoebox from "../Shoebox";
 const Search = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState("Nike");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setProducts([]);
     const getProducts = async () => {
       const response = await fetch(
-        `http://localhost:3002/api/search?query=${query}`
+        `http://localhost:3002/api/search?query=${query}&page=${page}&limit=60`
       );
       const data = await response.json();
-      setProducts(data);
+      setProducts(data.data);
     };
     getProducts();
-  }, [query]);
+  }, [query, page]);
 
   const updateSearch = (e) => {
     setSearch(e.target.value);
