@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../../sass/Content.scss";
 import Shoebox from "../Shoebox";
 import Hero from "./Hero";
@@ -6,49 +7,100 @@ import Preloader from "../Preloader";
 import Footer from "../Footer";
 
 const Brands = ({ brand, id }) => {
-  const [products, setProducts] = useState([]);
   const [show, setShow] = useState([]);
   const [currentpage, setCurrentpage] = useState(1);
-
+  const [next, setNext] = useState(1);
+  const [previous, setPrevious] = useState(1);
+  const [pagelength, setPagelength] = useState(1);
+  const location = useLocation();
   useEffect(() => {
     const getProducts = async () => {
+      const Query = () => {
+        return new URLSearchParams(location.search);
+      };
+      let query = Query();
       const response = await fetch(
-        `${process.env.REACT_APP_API_URI}/api/brands/${id}`
+        `http://localhost:3002/api/brands/${id}?page=${query.get(
+          "page"
+        )}&limit=20`
       );
       const data = await response.json();
-      setProducts(data.sneakers);
+      setShow(data.data);
+      setNext(data.next);
+      setPrevious(data.previous);
+      setPagelength(data.pageLength);
+      setCurrentpage(parseInt(query.get("page")));
     };
     getProducts();
-  }, [brand]);
+  }, [brand, id, currentpage, location]);
 
-  useEffect(() => {
-    const boxperPage = 60;
-    const starting = currentpage * boxperPage - boxperPage;
-    const ending = currentpage * boxperPage;
-    const inShow = [];
-    for (let i = starting; i < ending; i++) {
-      if (products[i] === undefined) {
-        break;
-      } else {
-        inShow.push(products[i]);
+  const GeneratePaginations = () => {
+    const [opacityleft, setOpacityleft] = useState(1);
+    const [pointerleft, setPointerleft] = useState("auto");
+    const [opacityright, setOpacityright] = useState(1);
+    const [pointerright, setPointerright] = useState("auto");
+
+    useEffect(() => {
+      if (currentpage === 1) {
+        setOpacityleft(0);
+        setPointerleft("none");
+      } else if (currentpage === pagelength) {
+        setOpacityright(0);
+        setPointerright("none");
       }
-    }
-    setShow(inShow);
-  }, [currentpage, products]);
+    }, []);
 
-  const paginationLength = products.length / 60;
-  let buttons = [];
-  for (let i = 0; i < Math.ceil(paginationLength); i++) {
-    buttons.push(
-      <button
-        key={i + 1}
-        onClick={() => setCurrentpage(i + 1)}
-        className="page-btn"
-      >
-        {i + 1}
-      </button>
+    return (
+      <>
+        <Link
+          to={`${location.pathname}?page=${previous}`}
+          className="previous"
+          style={{ opacity: opacityleft, pointerEvents: pointerleft }}
+        >
+          <i className="fad fa-angle-left"></i>
+        </Link>
+        <Link
+          style={{ opacity: opacityleft, pointerEvents: pointerleft }}
+          className="page-btn"
+          to={`${location.pathname}?page=${1}`}
+        >
+          {1}
+        </Link>
+        <Link
+          style={{ opacity: opacityleft, pointerEvents: pointerleft }}
+          to={`${location.pathname}?page=${previous}`}
+          className="page-btn"
+        >
+          {previous}
+        </Link>
+        <div className="page-btn current">{currentpage}</div>
+        <Link
+          style={{ opacity: opacityright, pointerEvents: pointerright }}
+          to={`${location.pathname}?page=${next}`}
+          className="page-btn"
+        >
+          {next}
+        </Link>
+        <Link
+          style={{
+            opacity: opacityright,
+            pointerEvents: pointerright,
+          }}
+          to={`${location.pathname}?page=${pagelength}`}
+          className="page-btn"
+        >
+          {pagelength}
+        </Link>
+        <Link
+          style={{ opacity: opacityright, pointerEvents: pointerright }}
+          to={`${location.pathname}?page=${next}`}
+          className="next"
+        >
+          <i className="fad fa-angle-right"></i>
+        </Link>
+      </>
     );
-  }
+  };
 
   const renderBrands = () => {
     if (show.length === 0) {
@@ -73,7 +125,9 @@ const Brands = ({ brand, id }) => {
                   </div>
                 ))}
               </div>
-              <div className="pagination">{buttons}</div>
+              <div className="pagination">
+                <GeneratePaginations />
+              </div>
             </div>
             <Footer />
           </main>
