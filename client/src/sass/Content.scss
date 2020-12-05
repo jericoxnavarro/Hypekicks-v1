@@ -117,6 +117,7 @@ $text: #b3c0cc;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 30px;
 
       .page-btn {
         outline: none;
@@ -129,10 +130,47 @@ $text: #b3c0cc;
         margin: 0px 5px;
         border-radius: 8px;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
 
         &:hover {
           background-color: $content;
         }
+      }
+      .next {
+        font-size: 70px;
+        color: $secondary;
+        cursor: pointer;
+        margin-left: 10px;
+        &:hover {
+          color: $content;
+        }
+      }
+      .previous {
+        font-size: 70px;
+        color: $secondary;
+        cursor: pointer;
+        margin-right: 10px;
+        &:hover {
+          color: $content;
+        }
+      }
+      .current {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        background-color: $content;
+        color: $secondary;
+        cursor: auto;
+      }
+      .max {
+        height: 35px;
+        width: 35px;
       }
     }
 
