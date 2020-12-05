@@ -98,7 +98,7 @@ const Navbar = () => {
           style={{ pointerEvents: brandVisibility, opacity: brandDisplay }}
         >
           <div className="container">
-            <Link to="/nike" className="nike-logo">
+            <Link to="/nike?page=1" className="nike-logo">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 308.72 161.06"
@@ -117,7 +117,7 @@ const Navbar = () => {
                 </g>
               </svg>
             </Link>
-            <Link to="/adidas" className="adidas-logo">
+            <Link to="/adidas?page=1" className="adidas-logo">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 355.73 236.69"
@@ -141,7 +141,7 @@ const Navbar = () => {
                 </g>
               </svg>
             </Link>
-            <Link to="/vans" className="vans-logo">
+            <Link to="/vans?page=1" className="vans-logo">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 175.75 117.85"
@@ -176,7 +176,7 @@ const Navbar = () => {
                 </g>
               </svg>
             </Link>
-            <Link to="/converse" className="converse-logo">
+            <Link to="/converse?page=1" className="converse-logo">
               <svg
                 className="converse"
                 xmlns="http://www.w3.org/2000/svg"
@@ -236,7 +236,7 @@ const Navbar = () => {
                 </g>
               </svg>
             </Link>
-            <Link to="/newbalance" className="newbalance-logo">
+            <Link to="/newbalance?page=1" className="newbalance-logo">
               <svg
                 className="newbalance"
                 xmlns="http://www.w3.org/2000/svg"
@@ -336,7 +336,7 @@ const Navbar = () => {
                 </g>
               </svg>
             </Link>
-            <Link to="/reebok" className="reebok-logo">
+            <Link to="/reebok?page=1" className="reebok-logo">
               <svg
                 className="reebok"
                 xmlns="http://www.w3.org/2000/svg"
