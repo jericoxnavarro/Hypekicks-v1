@@ -5,9 +5,10 @@ $content: #7de89d;
 $text: #b3c0cc;
 
 .footer {
-  height: 200px;
+  height: 150px;
   width: 100%;
   background-color: $secondary;
+  margin-top: auto;
 
   .container {
     height: 100%;
@@ -20,25 +21,24 @@ $text: #b3c0cc;
       width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       flex-direction: column;
       text-align: center;
       .hype-name {
         font-family: "futurabold_italic";
-        font-size: 40px;
+        font-size: 1.3rem;
         text-decoration: none;
         color: $content;
         span {
           font-family: "futuraextra_black";
           color: $primary;
-          margin-right: 2 px;
+          margin-right: 2px;
         }
       }
       .about-hypekicks {
-        font-size: 15px;
+        font-size: 0.5rem;
         font-weight: 700;
         color: $text;
-        width: 450px;
       }
     }
   }
