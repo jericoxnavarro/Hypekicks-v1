@@ -11,7 +11,7 @@ const Navbar = () => {
   const [pricingVisibility, setpricingVisibility] = useState("none");
   const [user, setUser] = useState("Jerico");
   const [mobile, setMobile] = useState("");
-  const [slider, setSlider] = useState("1000px");
+  const [slider, setSlider] = useState("8000px");
   const [brands, setBrands] = useState("0");
   const [brandsdisplay, setBrandsdisplay] = useState("none");
 
@@ -21,7 +21,7 @@ const Navbar = () => {
         <i
           onClick={() => {
             setMobile("");
-            setSlider("1000px");
+            setSlider("8000px");
           }}
           className="fad fa-times bars"
         ></i>
@@ -56,7 +56,7 @@ const Navbar = () => {
             </Link>
             <ul className="nav-items">
               <li className="nav-item">
-                <Link to="/">Home</Link>
+                <Link to="/?page=1">Home</Link>
               </li>
               <li
                 className="nav-item brand"
@@ -71,7 +71,7 @@ const Navbar = () => {
                 <i className="fad fa-angle-down down"></i>
               </li>
               <li className="nav-item">
-                <Link to="/search">Search</Link>
+                <Link to="/search?page=1">Search</Link>
               </li>
               <li
                 className="nav-item pricing"
@@ -493,7 +493,7 @@ const Navbar = () => {
               <div className="container mobile-con">
                 <ul className="mobile-nav-items">
                   <li className="mobile-nav-item">
-                    <Link className="mobile-link">
+                    <Link to="/?page=1" className="mobile-link">
                       Home
                       <i className="fad fa-home-lg-alt"></i>
                     </Link>
