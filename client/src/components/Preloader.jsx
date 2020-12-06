@@ -246,7 +246,7 @@ const Preloader = ({ brand }) => {
         <Lotties
           className="lottie"
           options={defaultOptions}
-          height={300}
+          height={70}
           width={450}
         />
       </div>
