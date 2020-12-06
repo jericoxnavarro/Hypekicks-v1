@@ -20,12 +20,13 @@ $text: #b3c0cc;
     .hero-heading {
       font-family: "futuraextra_black";
       color: $primary;
-      font-size: 80px;
+      font-size: 2.5rem;
+      height: 2rem;
       margin-top: auto;
     }
     .hero-text {
       font-weight: 500;
-      font-size: 25px;
+      font-size: 0.6rem;
       color: $text;
     }
     .brands {
@@ -33,12 +34,14 @@ $text: #b3c0cc;
       justify-content: center;
       align-items: center;
       margin-top: auto;
+      height: 4rem;
+      width: 100%;
 
       svg {
-        height: 80px;
-        width: 80px;
+        height: 100%;
+        width: 2rem;
         fill: $primary;
-        margin-right: 60px;
+        margin-right: 0.6rem;
 
         &:last-child {
           margin-right: 0px;
@@ -48,15 +51,12 @@ $text: #b3c0cc;
         }
       }
       .nike {
-        margin-right: 50px;
       }
       .adidas {
-        height: 65px;
-        width: 65px;
+        width: 1.7rem;
       }
       .vans {
-        height: 65px;
-        width: 65px;
+        width: 1.6rem;
       }
       .converse {
         .cls-1 {
