@@ -2,8 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const SneaksAPI = require("sneaks-api");
-const sneaks = new SneaksAPI();
+const SneaksAPI = require("./sneaks-api");
 const Popular = require("./models/Popular.model");
 require("dotenv").config();
 
@@ -14,7 +13,7 @@ const userRoute = require("./routes/User.routes");
 const searchRoute = require("./routes/Search.routes");
 
 const app = express();
-const port = process.env.PORT_MAIN || 3000;
+const port = process.env.PORT;
 
 // Midlewares
 app.use(cors());
@@ -45,7 +44,8 @@ mongoose
     app.listen(port, async () => {
       console.log("Hypekicks server is running on port", port);
       try {
-        /*await sneaks.getMostPopular(async (err, products) => {
+        const sneaks = new SneaksAPI();
+        await sneaks.getMostPopular(async (err, products) => {
           const popular = await Popular.find();
           if (popular[0].sneakers.length < products.length) {
             const updatePopular = await Popular.updateOne(
@@ -54,7 +54,7 @@ mongoose
             );
             console.log(updatePopular);
           }
-        });*/
+        });
       } catch (err) {
         console.log(err);
       }
