@@ -109,6 +109,47 @@ $content: #7de89d;
   max-width: 100%;
 }
 
+html {
+  font-size: 50px;
+  @media screen and (max-width: 2150px) {
+    font-size: 40px;
+  }
+  @media screen and (max-width: 1800px) {
+    font-size: 35px;
+  }
+  @media screen and (max-width: 1400px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 1200px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 1050px) {
+    font-size: 25px;
+  }
+  @media screen and (max-width: 992px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 850px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 25px;
+  }
+  @media screen and (max-width: 500px) {
+    height: 400px;
+    font-size: 20px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: 300px) {
+    font-size: 10px;
+  }
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -131,32 +172,27 @@ body {
 }
 
 .preloader {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: $primary;
-  position: relative;
-
+  padding-bottom: 60px;
   .svg-loader {
-    position: absolute;
-    height: 300px;
-    width: 300px;
-    top: 200px;
+    height: 5rem;
+    width: 10rem;
+    margin-bottom: 10px;
     fill: $secondary;
   }
   .conversesvg {
-    height: 300px;
-    width: 700px;
-    top: 250px;
-  }
-  .newbalance-main {
-    width: 400px;
+    height: 3rem;
+    width: 15rem;
+    margin-left: 20px;
   }
   .reebok-main {
-    width: 400px;
+    height: 4rem;
     .cls-1 {
       stroke: $primary;
       stroke-miterlimit: 10;
@@ -167,18 +203,15 @@ body {
   .adidas {
     margin-right: 20px;
   }
-
-  .lottie {
-    margin-bottom: 220px;
-  }
   .brand-name {
-    width: auto;
-    height: 100px;
+    height: 1.3rem;
+    width: 100%;
+    text-align: center;
     font-family: "futurabold_italic";
-    font-size: 100px;
-    top: 350px;
+    font-size: 2rem;
     text-decoration: none;
     color: $content;
+    margin-bottom: 20px;
     span {
       font-family: "futuraextra_black";
       color: $secondary;
