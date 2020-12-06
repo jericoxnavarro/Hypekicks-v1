@@ -11,10 +11,13 @@ $text: #b3c0cc;
   .container {
     height: auto;
     padding: 40px 120px;
+    padding-bottom: 0px;
 
     .trending {
       font-weight: 900;
-      font-size: 35px;
+      font-size: 1.2em;
+      width: 100%;
+      margin: 20px 0px;
       color: $secondary;
     }
 
@@ -34,7 +37,7 @@ $text: #b3c0cc;
         height: 600px;
         font-size: 50px;
         @media screen and (max-width: 2150px) {
-          height: 480px;
+          height: 450px;
           font-size: 40px;
         }
         @media screen and (max-width: 1800px) {
@@ -43,15 +46,15 @@ $text: #b3c0cc;
         }
         @media screen and (max-width: 1400px) {
           font-size: 36px;
-          height: 420px;
+          height: 400px;
         }
         @media screen and (max-width: 1200px) {
           font-size: 33px;
-          height: 400px;
+          height: 350px;
         }
         @media screen and (max-width: 1050px) {
           font-size: 28px;
-          height: 350px;
+          height: 300px;
         }
         @media screen and (max-width: 992px) {
           font-size: 35px;
@@ -59,18 +62,18 @@ $text: #b3c0cc;
         }
         @media screen and (max-width: 850px) {
           font-size: 30px;
-          height: 400px;
+          height: 350px;
         }
         @media screen and (max-width: 768px) {
           font-size: 45px;
           height: 550px;
         }
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 650px) {
           font-size: 40px;
-          height: 500px;
+          height: 450px;
         }
         @media screen and (max-width: 500px) {
-          height: 400px;
+          height: 350px;
           font-size: 30px;
         }
         @media screen and (max-width: 400px) {
@@ -95,20 +98,20 @@ $text: #b3c0cc;
       }
       @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
-        padding: 40px 90px;
+        padding: 0px 90px;
       }
       @media screen and (max-width: 668px) {
         grid-template-columns: 1fr;
-        padding: 40px 50px;
+        padding: 0px 50px;
       }
       @media screen and (max-width: 576px) {
-        padding: 40px 20px;
+        padding: 0px 20px;
       }
       @media screen and (max-width: 428px) {
-        padding: 40px 10px;
+        padding: 0px 10px;
       }
       @media screen and (max-width: 324px) {
-        padding: 20px 10px;
+        padding: 0px 10px;
       }
     }
 
@@ -117,18 +120,20 @@ $text: #b3c0cc;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 30px;
+      margin-top: 0.8rem;
+      margin-bottom: 0.8rem;
 
       .page-btn {
         outline: none;
         border: none;
-        height: 40px;
-        width: 40px;
+        height: 1.5rem;
+        width: 1.5rem;
+        font-size: 0.5rem;
         background-color: $secondary;
         color: $primary;
         font-weight: 600;
-        margin: 0px 5px;
-        border-radius: 8px;
+        margin: 0px 0.2rem;
+        border-radius: 0.4rem;
         cursor: pointer;
         display: flex;
         justify-content: center;
@@ -140,27 +145,28 @@ $text: #b3c0cc;
         }
       }
       .next {
-        font-size: 70px;
+        font-size: 1.5rem;
         color: $secondary;
         cursor: pointer;
-        margin-left: 10px;
+        margin-left: 0.5rem;
         &:hover {
           color: $content;
         }
       }
       .previous {
-        font-size: 70px;
+        font-size: 1.5rem;
         color: $secondary;
         cursor: pointer;
-        margin-right: 10px;
+        margin-right: 0.5rem;
         &:hover {
           color: $content;
         }
       }
       .current {
-        height: 50px;
-        width: 50px;
+        height: 2rem;
+        width: 2rem;
         display: flex;
+        font-size: 0.6rem;
         align-items: center;
         justify-content: center;
         font-weight: 900;
@@ -169,8 +175,9 @@ $text: #b3c0cc;
         cursor: auto;
       }
       .max {
-        height: 35px;
-        width: 35px;
+        height: 1.2rem;
+        width: 1.2rem;
+        font-size: 0.4rem;
       }
     }
 
