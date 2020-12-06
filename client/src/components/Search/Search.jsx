@@ -1,24 +1,39 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "../../sass/Search.scss";
 import Shoebox from "../Shoebox";
+import Pagination from "../Paginations";
+import Preloader from "../Preloader";
+import Footer from "../Footer";
 
 const Search = () => {
-  const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("Nike");
-  const [page, setPage] = useState(1);
-
+  const [querys, setQuery] = useState("Nike");
+  const [show, setShow] = useState([]);
+  const [currentpage, setCurrentpage] = useState(1);
+  const [next, setNext] = useState(1);
+  const [previous, setPrevious] = useState(1);
+  const [pagelength, setPagelength] = useState(1);
+  const location = useLocation();
   useEffect(() => {
-    setProducts([]);
+    setShow([]);
     const getProducts = async () => {
+      const Query = () => {
+        return new URLSearchParams(location.search);
+      };
+      let query = Query();
       const response = await fetch(
-        `http://localhost:3002/api/search?query=${query}&page=${page}&limit=60`
+        `${process.env.REACT_APP_API_URI}/api/search?query=${querys}&page=${currentpage}&limit=20`
       );
       const data = await response.json();
-      setProducts(data.data);
+      setShow(data.data);
+      setNext(data.next);
+      setPrevious(data.previous);
+      setPagelength(data.pageLength);
+      setCurrentpage(parseInt(query.get("page")));
     };
     getProducts();
-  }, [query, page]);
+  }, [currentpage, location, querys]);
 
   const updateSearch = (e) => {
     setSearch(e.target.value);
@@ -27,6 +42,33 @@ const Search = () => {
   const updateQuery = (e) => {
     e.preventDefault();
     setQuery(search);
+  };
+
+  const Check = () => {
+    if (show.length === 0) {
+      return <Preloader brand={"home"} />;
+    } else {
+      return (
+        <>
+          <div className="grid-main">
+            {show.map((product, index) => (
+              <div className="box">
+                <Shoebox product={product} key={index} />
+              </div>
+            ))}
+          </div>
+          <div className="pagination">
+            <Pagination
+              location={location}
+              currentpage={currentpage}
+              pagelength={pagelength}
+              previous={previous}
+              next={next}
+            />
+          </div>
+        </>
+      );
+    }
   };
 
   return (
@@ -304,18 +346,13 @@ const Search = () => {
         </div>
       </main>
 
-      <main className="main-content-search">
+      <main className="main-content">
         <div className="container">
-          <h1 className="search-heading">{query}</h1>
-          <p className="search-text">Top Result of {query}</p>
-          <div className="grid-main">
-            {products.map((product, index) => (
-              <div className="box">
-                <Shoebox product={product} key={index} />
-              </div>
-            ))}
-          </div>
+          <h1 className="search-heading">{querys}</h1>
+          <p className="search-text">Top Result of {querys}</p>
+          <Check />
         </div>
+        <Footer />
       </main>
     </>
   );
