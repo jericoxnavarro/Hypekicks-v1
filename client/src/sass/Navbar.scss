@@ -11,7 +11,7 @@ $text: #b3c0cc;
   position: absolute;
   background-color: $secondary;
   z-index: 10;
-  display: none;
+  display: block;
 
   .container {
     .navbar {
@@ -313,7 +313,7 @@ $text: #b3c0cc;
 }
 
 .mobile {
-  display: block;
+  display: none;
   .container {
     padding: 5px 5px;
     .navbar {
