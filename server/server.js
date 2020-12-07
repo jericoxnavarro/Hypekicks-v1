@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const SneaksAPI = require("./sneaks-api");
 const Popular = require("./models/Popular.model");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 //Routes
@@ -25,7 +26,14 @@ app.use("/api", popularRoute);
 app.use("/api", userRoute);
 app.use("/api", searchRoute);
 
-app.get("/api/new", async (req, res) => {});
+app.post("/login", async (req, res) => {
+  const username = req.body.username;
+  const user = { name: username };
+  const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
+  res.json({
+    accessToken: accessToken,
+  });
+});
 
 // DB Connections
 const dbURI = process.env.dbURI;
