@@ -3,19 +3,25 @@ const router = express.Router();
 const Joi = require("@hapi/joi");
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const verify = require("../routes/Verify.token");
 
 // Get all users
-router.get("/user", async (req, res) => {
+/*router.get("/user", verify, async (req, res) => {
   try {
     const brand = await User.find();
     res.json(brand);
   } catch (err) {
     res.json({ message: err });
   }
-});
+});*/
 
 // Get user
-router.get("/user/:userID", async (req, res) => {
+router.get("/user/:userID", verify, async (req, res) => {
+  // Check User ID if match
+  if (req.params.userID != req.user._id)
+    return res.status(401).send("User Access Denied");
+
   try {
     const user = await User.findById(req.params.userID);
     res.json(user);
@@ -25,7 +31,11 @@ router.get("/user/:userID", async (req, res) => {
 });
 
 // Get user favorites
-router.get("/user/favorites/:userID", async (req, res) => {
+router.get("/user/favorites/:userID", verify, async (req, res) => {
+  // Check User ID if match
+  if (req.params.userID != req.user._id)
+    return res.status(401).send("User Access Denied");
+
   try {
     const user = await User.findById(req.params.userID);
     res.json(user.favorites);
@@ -34,7 +44,7 @@ router.get("/user/favorites/:userID", async (req, res) => {
   }
 });
 
-const validationSchema = Joi.object({
+const validationCreate = Joi.object({
   username: Joi.string().min(6).required(),
   password: Joi.string().min(6).required(),
   fullname: Joi.string().min(6).required(),
@@ -45,7 +55,7 @@ const validationSchema = Joi.object({
 // Add user
 router.post("/user/create", async (req, res) => {
   // Request Validations
-  const { error } = validationSchema.validate(req.body);
+  const { error } = validationCreate.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   // Check if email exists
@@ -71,14 +81,18 @@ router.post("/user/create", async (req, res) => {
 
   try {
     const saveUser = await user.save();
-    res.json(saveUser);
+    res.json({ user: user._id, message: "User Created" });
   } catch (err) {
     res.status(400).send(err);
   }
 });
 
 // Update Favorites
-router.put("/user/updatefavorites/:userID", async (req, res) => {
+router.put("/user/updatefavorites/:userID", verify, async (req, res) => {
+  // Check User ID if match
+  if (req.params.userID != req.user._id)
+    return res.status(401).send("User Access Denied");
+
   try {
     const updateFavorites = await User.updateOne(
       { _id: req.params.userID },
@@ -88,6 +102,35 @@ router.put("/user/updatefavorites/:userID", async (req, res) => {
   } catch (err) {
     res.json({ message: err });
   }
+});
+
+const validationLogin = Joi.object({
+  username: Joi.string().min(6).required(),
+  password: Joi.string().min(6).required(),
+});
+
+// User log in
+router.post("/user/login", async (req, res) => {
+  // Request Validations
+  const { error } = validationLogin.validate(req.body);
+  if (error) return res.status(400).send({ message: error.details[0].message });
+
+  // Check if username exists
+  const user = await User.findOne({ username: req.body.username });
+  if (!user)
+    return res.status(400).send({ message: "Username or Password is wrong" });
+  const validPass = await bcrypt.compare(req.body.password, user.password);
+  if (!validPass) return res.status(400).send({ message: "Invalid Password" });
+
+  // Create and assign token
+  const payload = {
+    _id: user._id,
+    username: user.username,
+  };
+  const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: "1d",
+  });
+  res.header("auth-token", token).send({ token: token });
 });
 
 module.exports = router;
