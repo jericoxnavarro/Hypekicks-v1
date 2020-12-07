@@ -1,7 +1,35 @@
 import React from "react";
 import "../../sass/Signin.scss";
+import Cookies from "universal-cookie";
 
 const Signin = () => {
+  const cookies = new Cookies();
+
+  const submit = (e) => {
+    e.preventDefault();
+    let formData = [];
+
+    const data = new FormData(e.target);
+    data.forEach(function (value, key) {
+      formData.push(value);
+    });
+
+    fetch("http://localhost:3001/api/user/login", {
+      method: "POST",
+      body: JSON.stringify({
+        username: formData[0],
+        password: formData[1],
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        cookies.set("token", json.token, {
+          expires: new Date(Date.now() + 55920000),
+        });
+        console.log(json);
+      });
+  };
   return (
     <main className="main-signin">
       <div className="hypekicks-info">
@@ -16,10 +44,10 @@ const Signin = () => {
       </div>
       <div className="hypekicks-signin">
         <div className="container">
-          <form className="signin-form">
+          <form className="signin-form" onSubmit={submit}>
             <h1 className="signin-bigtext">Sign in to Hypekicks</h1>
             <label className="email-label">
-              Username or Email Address
+              Username
               <input required name="email-username" type="text" />
             </label>
             <label className="password-label">
