@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Paginations = ({ location, currentpage, pagelength, previous, next }) => {
+const Paginations = ({
+  location,
+  currentpage,
+  pagelength,
+  previous,
+  next,
+  query,
+}) => {
   const [opacityleft, setOpacityleft] = useState(1);
   const [pointerleft, setPointerleft] = useState("auto");
   const [opacityright, setOpacityright] = useState(1);
@@ -20,12 +27,16 @@ const Paginations = ({ location, currentpage, pagelength, previous, next }) => {
       setOpacityright(1);
       setPointerright("auto");
     }
-  }, [location, currentpage, pagelength]);
+    if (currentpage === next) {
+      setOpacityright(0);
+      setPointerright("none");
+    }
+  }, [location, currentpage, pagelength, next]);
 
   return (
     <>
       <Link
-        to={`${location.pathname}?page=${previous}`}
+        to={`${location.pathname}?page=${previous}&query=${query}`}
         className="previous"
         style={{ opacity: opacityleft, pointerEvents: pointerleft }}
       >
@@ -34,13 +45,13 @@ const Paginations = ({ location, currentpage, pagelength, previous, next }) => {
       <Link
         style={{ opacity: opacityleft, pointerEvents: pointerleft }}
         className="page-btn max"
-        to={`${location.pathname}?page=${1}`}
+        to={`${location.pathname}?page=${1}&query=${query}`}
       >
         {1}
       </Link>
       <Link
         style={{ opacity: opacityleft, pointerEvents: pointerleft }}
-        to={`${location.pathname}?page=${previous}`}
+        to={`${location.pathname}?page=${previous}&query=${query}`}
         className="page-btn"
       >
         {previous}
@@ -48,7 +59,7 @@ const Paginations = ({ location, currentpage, pagelength, previous, next }) => {
       <div className="page-btn current">{currentpage}</div>
       <Link
         style={{ opacity: opacityright, pointerEvents: pointerright }}
-        to={`${location.pathname}?page=${next}`}
+        to={`${location.pathname}?page=${next}&query=${query}`}
         className="page-btn"
       >
         {next}
@@ -58,14 +69,14 @@ const Paginations = ({ location, currentpage, pagelength, previous, next }) => {
           opacity: opacityright,
           pointerEvents: pointerright,
         }}
-        to={`${location.pathname}?page=${pagelength}`}
+        to={`${location.pathname}?page=${pagelength}&query=${query}`}
         className="page-btn max"
       >
         {pagelength}
       </Link>
       <Link
         style={{ opacity: opacityright, pointerEvents: pointerright }}
-        to={`${location.pathname}?page=${next}`}
+        to={`${location.pathname}?page=${next}&query=${query}`}
         className="next"
       >
         <i className="fad fa-angle-right"></i>
