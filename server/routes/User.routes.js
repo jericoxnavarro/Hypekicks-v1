@@ -113,14 +113,22 @@ const validationLogin = Joi.object({
 router.post("/user/login", async (req, res) => {
   // Request Validations
   const { error } = validationLogin.validate(req.body);
-  if (error) return res.status(400).send({ message: error.details[0].message });
+  if (error)
+    return res
+      .status(400)
+      .send({ message: error.details[0].message, status: "none" });
 
   // Check if username exists
   const user = await User.findOne({ username: req.body.username });
   if (!user)
-    return res.status(400).send({ message: "Username or Password is wrong" });
+    return res
+      .status(400)
+      .send({ message: `"Username or Password is wrong`, status: "none" });
   const validPass = await bcrypt.compare(req.body.password, user.password);
-  if (!validPass) return res.status(400).send({ message: "Invalid Password" });
+  if (!validPass)
+    return res
+      .status(400)
+      .send({ message: `"Invalid Password`, status: "none" });
 
   // Create and assign token
   const payload = {
@@ -130,7 +138,7 @@ router.post("/user/login", async (req, res) => {
   const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "1d",
   });
-  res.header("auth-token", token).send({ token: token });
+  res.header("auth-token", token).send({ token: token, _id: user._id });
 });
 
 module.exports = router;
