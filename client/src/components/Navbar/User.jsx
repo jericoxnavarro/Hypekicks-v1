@@ -35,7 +35,7 @@ const Guest = ({ name }) => {
         <nav className="navbar-profile">
           <ul className="nav-items-profile">
             <li className="nav-item-profile">
-              <Link className="link-profile" to="/jecoerror">
+              <Link className="link-profile" to="/profile">
                 <i className="fad fa-user-alt"></i>Profile
               </Link>
             </li>
