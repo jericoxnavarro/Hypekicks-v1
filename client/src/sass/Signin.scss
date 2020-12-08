@@ -13,7 +13,7 @@ $text: #b3c0cc;
   .hypekicks-info {
     height: 100%;
     width: 40%;
-    background-color: $secondary;
+    background-color: $primary;
     .container {
       display: flex;
       justify-content: center;
@@ -27,8 +27,8 @@ $text: #b3c0cc;
         color: $content;
         span {
           font-family: "futuraextra_black";
-          color: $primary;
-          margin-right: 2 px;
+          color: $secondary;
+          margin-right: 3px;
         }
       }
       .about-hypekicks {
@@ -96,6 +96,13 @@ $text: #b3c0cc;
             border: 1px solid $text;
             background-color: $primary;
           }
+        }
+        .error {
+          font-size: 0.5rem;
+          text-align: left;
+          color: rgb(236, 130, 130);
+          margin-bottom: 10px;
+          width: 70%;
         }
         .submit {
           width: 200px;

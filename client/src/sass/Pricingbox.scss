@@ -131,12 +131,12 @@ $text: #b3c0cc;
   }
 }
 
-.main-content {
+.main-content-pricing {
   width: 100%;
   height: 100%;
 
   .push {
-    height: 100%;
+    height: auto;
     padding-top: 70px;
     padding-bottom: 40px;
     .search-heading {
@@ -153,6 +153,7 @@ $text: #b3c0cc;
       color: $text;
       width: 100%;
       text-align: center;
+      margin-bottom: 1rem;
     }
     .trending {
       font-weight: 900;
@@ -180,6 +181,71 @@ $text: #b3c0cc;
 
       @media screen and (max-width: 1264px) {
         grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+    .pagination {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.8rem;
+      margin-bottom: 0.8rem;
+
+      .page-btn {
+        outline: none;
+        border: none;
+        height: 1.4rem;
+        width: 1.4rem;
+        font-size: 0.5rem;
+        background-color: $secondary;
+        color: $primary;
+        font-weight: 600;
+        margin: 0px 0.1rem;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $content;
+        }
+      }
+      .next {
+        font-size: 1.5rem;
+        color: $secondary;
+        cursor: pointer;
+        margin-left: 0.2rem;
+        &:hover {
+          color: $content;
+        }
+      }
+      .previous {
+        font-size: 1.5rem;
+        color: $secondary;
+        cursor: pointer;
+        margin-right: 0.2rem;
+        &:hover {
+          color: $content;
+        }
+      }
+      .current {
+        height: 1.7rem;
+        width: 1.7rem;
+        display: flex;
+        font-size: 0.6rem;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        background-color: $content;
+        color: $secondary;
+        cursor: auto;
+      }
+      .max {
+        height: 1.2rem;
+        width: 1.2rem;
+        font-size: 0.4rem;
       }
     }
   }

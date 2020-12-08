@@ -112,7 +112,7 @@ $content: #7de89d;
 html {
   font-size: 50px;
   @media screen and (max-width: 2150px) {
-    font-size: 40px;
+    font-size: 35px;
   }
   @media screen and (max-width: 1890px) {
     font-size: 35px;
@@ -175,11 +175,12 @@ body {
   height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   background-color: $primary;
   padding-bottom: 60px;
+  padding-top: 1rem;
   .svg-loader {
     height: 5rem;
     width: 10rem;
@@ -211,7 +212,7 @@ body {
     font-size: 2rem;
     text-decoration: none;
     color: $content;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     span {
       font-family: "futuraextra_black";
       color: $secondary;
