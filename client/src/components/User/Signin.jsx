@@ -1,9 +1,14 @@
 import React from "react";
 import "../../sass/Signin.scss";
 import Cookies from "universal-cookie";
+import { UserContext } from "../User.context";
 
 const Signin = () => {
   const cookies = new Cookies();
+  const [showstatus, setStatus] = React.useState("");
+  const { _uid, token } = React.useContext(UserContext);
+  const [userid, setUserid] = _uid;
+  const [usertoken, setUsertoken] = token;
 
   const submit = (e) => {
     e.preventDefault();
@@ -24,12 +29,25 @@ const Signin = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        cookies.set("token", json.token, {
-          expires: new Date(Date.now() + 55920000),
-        });
-        console.log(json);
+        console.log(json.status);
+        if (json.status === "none") {
+          setStatus(json.message);
+          console.log(json.message);
+        } else {
+          const date = new Date(Date.now() + 55920000);
+          setUserid(json._id);
+          setUsertoken(json.token);
+          cookies.set("token", json.token, {
+            expires: date,
+          });
+          cookies.set("_id", json._id, {
+            expires: date,
+          });
+          setStatus("");
+        }
       });
   };
+
   return (
     <main className="main-signin">
       <div className="hypekicks-info">
@@ -54,6 +72,10 @@ const Signin = () => {
               Password
               <input required name="password" type="password" />
             </label>
+            <p className="error">
+              {showstatus.charAt(1).toUpperCase() +
+                showstatus.replaceAll('"', "").slice(1)}
+            </p>
             <div className="btn-wrapper">
               <button type="submit" name="submit" className="submit">
                 Sign in
