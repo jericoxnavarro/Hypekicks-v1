@@ -8,42 +8,59 @@ import Footer from "../Footer";
 import Pagination from "../Paginations";
 
 const Home = ({ brand }) => {
-  const [show, setShow] = useState([]);
+  // Home States
+  const [products, setProducts] = useState([]);
   const [currentpage, setCurrentpage] = useState(1);
   const [next, setNext] = useState(1);
   const [previous, setPrevious] = useState(1);
   const [pagelength, setPagelength] = useState(1);
   const location = useLocation();
+
+  // Home Effects
   useEffect(() => {
-    setShow([]);
-    const getProducts = async () => {
-      const Query = () => {
-        return new URLSearchParams(location.search);
-      };
-      let query = Query();
+    // Set Products to empty to promt the prelaoder
+    setProducts([]);
+
+    // Get URL Queries
+    const Query = () => {
+      return new URLSearchParams(location.search);
+    };
+    let query = Query();
+
+    // Get Products/Shoes Data in the Hypekicks API
+    const getProducts = async (page) => {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URI}/api/popular?page=${query.get(
-          "page"
-        )}&limit=20`
+        `${process.env.REACT_APP_API_URI}/api/popular?page=${page}&limit=20`
       );
       const data = await response.json();
-      setShow(data.data);
+      setProducts(data.data);
       setNext(data.next);
       setPrevious(data.previous);
       setPagelength(data.pageLength);
-      setCurrentpage(parseInt(query.get("page")));
     };
-    getProducts();
+
+    // Check if theres a URL Queary
+    if (query.get("page")) {
+      setCurrentpage(parseInt(query.get("page")));
+      const getPage = parseInt(query.get("page"));
+      if (getPage === currentpage) {
+        getProducts(getPage);
+      }
+    } else {
+      setCurrentpage(1);
+      getProducts(1);
+    }
   }, [brand, currentpage, location]);
 
+  // Check if products is available if not preloader will show
   const Render = () => {
-    if (show.length === 0) {
+    if (products.length === 0) {
       return <Preloader brand={brand} />;
     } else {
       return (
         <>
           <div className="grid-main">
-            {show.map((product, index) => (
+            {products.map((product, index) => (
               <div key={product._id} className="box">
                 <Shoebox product={product} />
               </div>
@@ -63,6 +80,7 @@ const Home = ({ brand }) => {
     }
   };
 
+  // Render Home Component
   return (
     <>
       <Homehero />
