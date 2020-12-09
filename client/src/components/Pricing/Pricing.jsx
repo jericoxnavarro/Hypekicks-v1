@@ -7,42 +7,49 @@ import Footer from "../Footer";
 import Preloader from "../Preloader";
 import Pagination from "../Paginations";
 
-const FlightClub = ({ pricing }) => {
+const Pricing = ({ pricing }) => {
+  // Pricing States
   const [search, setSearch] = useState("");
   const [querys, setQuery] = useState("");
-  const [show, setShow] = useState([]);
+  const [products, setProducts] = useState([]);
   const [currentpage, setCurrentpage] = useState(1);
   const [next, setNext] = useState(1);
   const [previous, setPrevious] = useState(1);
   const [pagelength, setPagelength] = useState(1);
   const location = useLocation();
+
+  // Pricing Effects
   useEffect(() => {
+    setProducts([]);
     const Query = () => {
       return new URLSearchParams(location.search);
     };
-    let query = Query();
+    const query = Query();
+
+    const getProducts = async (page, quer) => {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URI}/api/search/pricing/${pricing}?query=${quer}&page=${page}&limit=18`
+      );
+      const data = await response.json();
+      setProducts(data.data);
+      setNext(data.next);
+      setPrevious(data.previous);
+      setPagelength(data.pageLength);
+    };
+
     if (query.get("query")) {
-      setShow([]);
-      const getProducts = async () => {
-        setCurrentpage(parseInt(query.get("page")));
-        setQuery(query.get("query"));
-        const response = await fetch(
-          `${process.env.REACT_APP_API_URI}/api/search/pricing/${pricing}?query=${querys}&page=${currentpage}&limit=18`
-        );
-        const data = await response.json();
-        setShow(data.data);
-        setNext(data.next);
-        setPrevious(data.previous);
-        setPagelength(data.pageLength);
-      };
-      getProducts();
+      setCurrentpage(parseInt(query.get("page")));
+      setQuery(query.get("query"));
+      const getQuery = query.get("query").replaceAll("%20", " ");
+      const getPage = parseInt(query.get("page"));
+      if (querys !== "") {
+        if (currentpage === getPage && querys === getQuery) {
+          getProducts(currentpage, querys);
+        }
+      }
     } else {
     }
-  }, [currentpage, location, querys, pricing]);
-
-  const updateSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  }, [location, querys, currentpage, pricing]);
 
   const Check = () => {
     const Priceboxcheck = ({ product }) => {
@@ -67,13 +74,13 @@ const FlightClub = ({ pricing }) => {
         );
       }
     };
-    if (show.length === 0) {
+    if (products.length === 0) {
       return <Preloader brand={"home"} />;
     } else {
       return (
         <>
           <div className="grid-main-pricing">
-            {show.map((product, index) => (
+            {products.map((product, index) => (
               <Priceboxcheck key={index} product={product} />
             ))}
           </div>
@@ -103,7 +110,7 @@ const FlightClub = ({ pricing }) => {
               placeholder="Search"
               type="text"
               name="search"
-              onChange={updateSearch}
+              onChange={(e) => setSearch(e.target.value)}
             />
             <Link
               className="search-submit"
@@ -129,4 +136,4 @@ const FlightClub = ({ pricing }) => {
   );
 };
 
-export default FlightClub;
+export default Pricing;
