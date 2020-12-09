@@ -4,7 +4,7 @@
 
   <h3 align="center">:zap:Hypekicks:zap:</h3>
 </p>
-The Hypekicks is a React website that allows users to search sneakers, get product information and compare prices from StockX, Flight Club, Goat and Stadium Goods.
+The Hypekicks is a React website that allows users to search sneakers, get product information, and compare prices from StockX, Flight Club, Goat, and Stadium Goods. Hypekicks also allows a user to add their favorites sneakers in their profile.
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents:rocket:</summary>
@@ -26,7 +26,9 @@ The Hypekicks is a React website that allows users to search sneakers, get produ
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
+## Project Status :fire:
+
+Hypekicks is currently in the development process
 
 ## About The Project :chicken:
 
@@ -60,7 +62,10 @@ This is how to run the files.
    ```sh
    npm install
    ```
-   ``
+3. Start Project
+   ```sh
+   yarn start
+   ```
 
 <!-- CONTACT -->
 
