@@ -13,6 +13,7 @@ const Paginations = ({
   const [pointerleft, setPointerleft] = useState("auto");
   const [opacityright, setOpacityright] = useState(1);
   const [pointerright, setPointerright] = useState("auto");
+  const [header, setHeader] = useState("");
 
   useEffect(() => {
     if (currentpage === 1) {
@@ -31,12 +32,14 @@ const Paginations = ({
       setOpacityright(0);
       setPointerright("none");
     }
-  }, [location, currentpage, pagelength, next]);
-
+    if (query) {
+      setHeader(`&query=${query}`);
+    }
+  }, [location, currentpage, pagelength, next, query]);
   return (
     <>
       <Link
-        to={`${location.pathname}?page=${previous}&query=${query}`}
+        to={`${location.pathname}?page=${previous}${header}`}
         className="previous"
         style={{ opacity: opacityleft, pointerEvents: pointerleft }}
       >
@@ -45,13 +48,13 @@ const Paginations = ({
       <Link
         style={{ opacity: opacityleft, pointerEvents: pointerleft }}
         className="page-btn max"
-        to={`${location.pathname}?page=${1}&query=${query}`}
+        to={`${location.pathname}?page=${1}${header}`}
       >
         {1}
       </Link>
       <Link
         style={{ opacity: opacityleft, pointerEvents: pointerleft }}
-        to={`${location.pathname}?page=${previous}&query=${query}`}
+        to={`${location.pathname}?page=${previous}${header}`}
         className="page-btn"
       >
         {previous}
@@ -59,7 +62,7 @@ const Paginations = ({
       <div className="page-btn current">{currentpage}</div>
       <Link
         style={{ opacity: opacityright, pointerEvents: pointerright }}
-        to={`${location.pathname}?page=${next}&query=${query}`}
+        to={`${location.pathname}?page=${next}${header}`}
         className="page-btn"
       >
         {next}
@@ -69,14 +72,14 @@ const Paginations = ({
           opacity: opacityright,
           pointerEvents: pointerright,
         }}
-        to={`${location.pathname}?page=${pagelength}&query=${query}`}
+        to={`${location.pathname}?page=${pagelength}${header}`}
         className="page-btn max"
       >
         {pagelength}
       </Link>
       <Link
         style={{ opacity: opacityright, pointerEvents: pointerright }}
-        to={`${location.pathname}?page=${next}&query=${query}`}
+        to={`${location.pathname}?page=${next}${header}`}
         className="next"
       >
         <i className="fad fa-angle-right"></i>
