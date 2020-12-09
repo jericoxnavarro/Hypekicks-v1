@@ -77,7 +77,7 @@ const Navbar = () => {
               </Link>
               <ul className="nav-items">
                 <li className="nav-item">
-                  <Link to="/?page=1">Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li
                   className="nav-item brand"
@@ -92,7 +92,7 @@ const Navbar = () => {
                   <i className="fad fa-angle-down down"></i>
                 </li>
                 <li className="nav-item">
-                  <Link to="/search?page=1">Search</Link>
+                  <Link to="/search">Search</Link>
                 </li>
                 <li
                   className="nav-item pricing"
@@ -119,7 +119,7 @@ const Navbar = () => {
             style={{ pointerEvents: brandVisibility, opacity: brandDisplay }}
           >
             <div className="container">
-              <Link to="/nike?page=1" className="nike-logo">
+              <Link to="/nike" className="nike-logo">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 308.72 161.06"
@@ -138,7 +138,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/adidas?page=1" className="adidas-logo">
+              <Link to="/adidas" className="adidas-logo">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 355.73 236.69"
@@ -162,7 +162,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/vans?page=1" className="vans-logo">
+              <Link to="/vans" className="vans-logo">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 175.75 117.85"
@@ -197,7 +197,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/converse?page=1" className="converse-logo">
+              <Link to="/converse" className="converse-logo">
                 <svg
                   className="converse"
                   xmlns="http://www.w3.org/2000/svg"
@@ -257,7 +257,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/newbalance?page=1" className="newbalance-logo">
+              <Link to="/newbalance" className="newbalance-logo">
                 <svg
                   className="newbalance"
                   xmlns="http://www.w3.org/2000/svg"
@@ -357,7 +357,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/reebok?page=1" className="reebok-logo">
+              <Link to="/reebok" className="reebok-logo">
                 <svg
                   className="reebok"
                   xmlns="http://www.w3.org/2000/svg"
@@ -520,7 +520,7 @@ const Navbar = () => {
                 <div className="container mobile-con">
                   <ul className="mobile-nav-items">
                     <li className="mobile-nav-item">
-                      <Link to="/?page=1" className="mobile-link">
+                      <Link to="/" className="mobile-link">
                         Home
                         <i className="fad fa-home-lg-alt"></i>
                       </Link>
