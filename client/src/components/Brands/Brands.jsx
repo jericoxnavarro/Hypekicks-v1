@@ -8,36 +8,45 @@ import Footer from "../Footer";
 import Pagination from "../Paginations";
 
 const Brands = ({ brand, id }) => {
-  const [show, setShow] = useState([]);
+  const [products, setProducts] = useState([]);
   const [currentpage, setCurrentpage] = useState(1);
   const [next, setNext] = useState(1);
   const [previous, setPrevious] = useState(1);
   const [pagelength, setPagelength] = useState(1);
   const location = useLocation();
   useEffect(() => {
-    setShow([]);
-    const getProducts = async () => {
-      const Query = () => {
-        return new URLSearchParams(location.search);
-      };
-      let query = Query();
+    setProducts([]);
+
+    const Query = () => {
+      return new URLSearchParams(location.search);
+    };
+    let query = Query();
+
+    const getProducts = async (page) => {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URI}/api/brands/${id}?page=${query.get(
-          "page"
-        )}&limit=20`
+        `${process.env.REACT_APP_API_URI}/api/brands/${id}?page=${page}&limit=20`
       );
       const data = await response.json();
-      setShow(data.data);
+      setProducts(data.data);
       setNext(data.next);
       setPrevious(data.previous);
       setPagelength(data.pageLength);
-      setCurrentpage(parseInt(query.get("page")));
     };
-    getProducts();
+
+    if (query.get("page")) {
+      setCurrentpage(parseInt(query.get("page")));
+      const getPage = parseInt(query.get("page"));
+      if (getPage === currentpage) {
+        getProducts(getPage);
+      }
+    } else {
+      setCurrentpage(1);
+      getProducts(1);
+    }
   }, [brand, id, currentpage, location]);
 
   const Render = () => {
-    if (show.length === 0) {
+    if (products.length === 0) {
       return (
         <>
           <Preloader brand={brand} />
@@ -47,7 +56,7 @@ const Brands = ({ brand, id }) => {
       return (
         <>
           <div className="grid-main">
-            {show.map((product) => (
+            {products.map((product) => (
               <div key={product._id} className="box">
                 <Shoebox product={product} />
               </div>
