@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../../sass/Search.scss";
 import Shoebox from "../Shoebox";
 import Pagination from "../Paginations";
@@ -8,50 +8,58 @@ import Footer from "../Footer";
 
 const Search = () => {
   const [search, setSearch] = useState("");
-  const [querys, setQuery] = useState("Nike");
-  const [show, setShow] = useState([]);
+  const [querys, setQuery] = useState("");
+  const [products, setProducts] = useState([]);
   const [currentpage, setCurrentpage] = useState(1);
   const [next, setNext] = useState(1);
   const [previous, setPrevious] = useState(1);
   const [pagelength, setPagelength] = useState(1);
   const location = useLocation();
   useEffect(() => {
-    setShow([]);
-    const getProducts = async () => {
-      const Query = () => {
-        return new URLSearchParams(location.search);
-      };
-      let query = Query();
+    setProducts([]);
+
+    const Query = () => {
+      return new URLSearchParams(location.search);
+    };
+    let query = Query();
+
+    const getProducts = async (page, quer) => {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URI}/api/search?query=${querys}&page=${currentpage}&limit=20`
+        `${process.env.REACT_APP_API_URI}/api/search?query=${quer}&page=${page}&limit=20`
       );
       const data = await response.json();
-      setShow(data.data);
+      setProducts(data.data);
       setNext(data.next);
       setPrevious(data.previous);
       setPagelength(data.pageLength);
-      setCurrentpage(parseInt(query.get("page")));
     };
-    getProducts();
+
+    if (query.get("query")) {
+      setCurrentpage(parseInt(query.get("page")));
+      setQuery(query.get("query"));
+      const getQuery = query.get("query").replaceAll("%20", " ");
+      const getPage = parseInt(query.get("page"));
+      if (querys !== "") {
+        if (currentpage === getPage && querys === getQuery) {
+          getProducts(currentpage, querys);
+        }
+      }
+    } else {
+      setQuery("Jordan");
+      if (querys === "Jordan") {
+        getProducts(currentpage, querys);
+      }
+    }
   }, [currentpage, location, querys]);
 
-  const updateSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const updateQuery = (e) => {
-    e.preventDefault();
-    setQuery(search);
-  };
-
   const Check = () => {
-    if (show.length === 0) {
+    if (products.length === 0) {
       return <Preloader brand={"home"} />;
     } else {
       return (
         <>
           <div className="grid-main">
-            {show.map((product, index) => (
+            {products.map((product, index) => (
               <div className="box">
                 <Shoebox product={product} key={index} />
               </div>
@@ -332,16 +340,16 @@ const Search = () => {
               placeholder="Search"
               type="text"
               name="search"
-              onChange={updateSearch}
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <button
+            <Link
               className="search-submit"
               type="submit"
               name="submit"
-              onClick={updateQuery}
+              to={`${location.pathname}?page=1&query=${search}`}
             >
               <i class="fad fa-search"></i>
-            </button>
+            </Link>
           </form>
         </div>
       </main>
