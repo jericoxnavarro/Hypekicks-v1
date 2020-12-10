@@ -48,6 +48,10 @@ const Pricing = ({ pricing }) => {
         }
       }
     } else {
+      setQuery("Jordan 1 Retro High");
+      if (querys === "Jordan 1 Retro High") {
+        getProducts(currentpage, querys);
+      }
     }
   }, [location, querys, currentpage, pricing]);
 
