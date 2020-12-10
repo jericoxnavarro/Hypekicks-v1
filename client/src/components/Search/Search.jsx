@@ -45,8 +45,8 @@ const Search = () => {
         }
       }
     } else {
-      setQuery("Jordan");
-      if (querys === "Jordan") {
+      setQuery("Jordan 1 Retro High");
+      if (querys === "Jordan 1 Retro High") {
         getProducts(currentpage, querys);
       }
     }
