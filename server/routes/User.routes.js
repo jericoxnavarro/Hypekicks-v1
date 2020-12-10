@@ -56,15 +56,24 @@ const validationCreate = Joi.object({
 router.post("/user/create", async (req, res) => {
   // Request Validations
   const { error } = validationCreate.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error)
+    return res
+      .status(400)
+      .send({ message: error.details[0].message, status: "none" });
 
   // Check if email exists
   const emailExist = await User.findOne({ email: req.body.email });
-  if (emailExist) return res.status(400).send("Email already exists");
+  if (emailExist)
+    return res
+      .status(400)
+      .send({ message: `"Email already exists`, status: "none" });
 
   // Check if username exists
   const usernameExist = await User.findOne({ username: req.body.username });
-  if (usernameExist) return res.status(400).send("Username already exists");
+  if (usernameExist)
+    return res
+      .status(400)
+      .send({ message: `"Username already exists`, status: "none" });
 
   // Hash password
   const salt = await bcrypt.genSalt(10);
@@ -81,9 +90,9 @@ router.post("/user/create", async (req, res) => {
 
   try {
     const saveUser = await user.save();
-    res.json({ user: user._id, message: "User Created" });
+    res.json({ user: user._id, message: `"User Created` });
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).send({ message: err, status: "none" });
   }
 });
 

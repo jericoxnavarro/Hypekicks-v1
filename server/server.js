@@ -51,21 +51,21 @@ mongoose
     // Server run after DB Connection is up
     app.listen(port, async () => {
       console.log("Hypekicks server is running on port", port);
-      try {
-        const sneaks = new SneaksAPI();
-        await sneaks.getMostPopular(async (err, products) => {
-          const popular = await Popular.find();
-          if (popular[0].sneakers.length < products.length) {
-            const updatePopular = await Popular.updateOne(
-              { _id: popular[0]._id },
-              { $set: { sneakers: products } }
-            );
-            console.log(updatePopular);
-          }
-        });
-      } catch (err) {
-        console.log(err);
-      }
+      // try {
+      //   const sneaks = new SneaksAPI();
+      //   await sneaks.getMostPopular(async (err, products) => {
+      //     const popular = await Popular.find();
+      //     if (popular[0].sneakers.length < products.length) {
+      //       const updatePopular = await Popular.updateOne(
+      //         { _id: popular[0]._id },
+      //         { $set: { sneakers: products } }
+      //       );
+      //       console.log(updatePopular);
+      //     }
+      //   });
+      // } catch (err) {
+      //   console.log(err);
+      // }
     });
   })
   .catch((err) => console.log(err));
