@@ -111,6 +111,13 @@ $text: #b3c0cc;
             background-color: $primary;
           }
         }
+        .error {
+          font-size: 0.7rem;
+          text-align: left;
+          color: rgb(236, 130, 130);
+          margin: 15px 0px;
+          width: 70%;
+        }
         .submit {
           width: 200px;
           height: 60px;
