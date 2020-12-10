@@ -24,44 +24,32 @@ function App() {
             <Route
               exact
               path="/nike"
-              component={() => (
-                <Brands brand="nike" id="5fb25d4f1baee003e49264a8" />
-              )}
+              component={() => <Brands brand="nike" id="Nike" />}
             />
             <Route
               exact
               path="/adidas"
-              component={() => (
-                <Brands brand="adidas" id="5fb267415dc23804286cf5f4" />
-              )}
+              component={() => <Brands brand="adidas" id="Adidas" />}
             />
             <Route
               exact
               path="/vans"
-              component={() => (
-                <Brands brand="vans" id="5fb26b252a3c4704434e0e33" />
-              )}
+              component={() => <Brands brand="vans" id="Vans" />}
             />
             <Route
               exact
               path="/converse"
-              component={() => (
-                <Brands brand="converse" id="5fb26b8c2a3c4704434e10c6" />
-              )}
+              component={() => <Brands brand="converse" id="Converse" />}
             />
             <Route
               exact
               path="/newbalance"
-              component={() => (
-                <Brands brand="newbalance" id="5fb26bff2a3c4704434e142f" />
-              )}
+              component={() => <Brands brand="newbalance" id="NewBalance" />}
             />
             <Route
               exact
               path="/reebok"
-              component={() => (
-                <Brands brand="reebok" id="5fb26c5a2a3c4704434e177e" />
-              )}
+              component={() => <Brands brand="reebok" id="Reebok" />}
             />
             <Route exact path="/search" component={Searchcontent} />
             <Route
