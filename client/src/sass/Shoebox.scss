@@ -377,10 +377,12 @@ $red: #e94553;
           background-color: $secondary;
           cursor: pointer;
           &:first-child {
-            border-radius: 50% 0% 0% 50%;
+            border-top-left-radius: 50% !important;
+            border-bottom-left-radius: 50% !important;
           }
           &:last-child {
-            border-radius: 0% 50% 50% 0%;
+            border-top-right-radius: 50% !important;
+            border-bottom-right-radius: 50% !important;
           }
           &:hover {
             border-radius: 50%;
