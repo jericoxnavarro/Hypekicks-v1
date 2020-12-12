@@ -2,9 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const SneaksAPI = require("./sneaks-api");
-const Popular = require("./models/Popular.model");
-const jwt = require("jsonwebtoken");
+const ScrapperControllers = require("./controllers/Scrapers.controllers");
 require("dotenv").config();
 
 //Routes
@@ -26,15 +24,6 @@ app.use("/api", popularRoute);
 app.use("/api", userRoute);
 app.use("/api", searchRoute);
 
-app.post("/login", async (req, res) => {
-  const username = req.body.username;
-  const user = { name: username };
-  const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
-  res.json({
-    accessToken: accessToken,
-  });
-});
-
 // DB Connections
 const dbURI = process.env.dbURI;
 const options = {
@@ -51,21 +40,6 @@ mongoose
     // Server run after DB Connection is up
     app.listen(port, async () => {
       console.log("Hypekicks server is running on port", port);
-      // try {
-      //   const sneaks = new SneaksAPI();
-      //   await sneaks.getMostPopular(async (err, products) => {
-      //     const popular = await Popular.find();
-      //     if (popular[0].sneakers.length < products.length) {
-      //       const updatePopular = await Popular.updateOne(
-      //         { _id: popular[0]._id },
-      //         { $set: { sneakers: products } }
-      //       );
-      //       console.log(updatePopular);
-      //     }
-      //   });
-      // } catch (err) {
-      //   console.log(err);
-      // }
     });
   })
   .catch((err) => console.log(err));
