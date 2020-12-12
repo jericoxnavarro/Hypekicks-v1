@@ -72,6 +72,7 @@ const Search = () => {
               pagelength={pagelength}
               previous={previous}
               next={next}
+              query={querys}
             />
           </div>
         </>
