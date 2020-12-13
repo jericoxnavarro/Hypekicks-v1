@@ -4,6 +4,8 @@ import "../../sass/Navbar.scss";
 import Guest from "./Guest";
 import User from "./User";
 import { UserContext } from "../User.context";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 const Navbar = () => {
   const { _uid, token } = useContext(UserContext);
@@ -14,6 +16,7 @@ const Navbar = () => {
   const [pricingDisplay, setpricingDisplay] = useState(0);
   const [pricingVisibility, setpricingVisibility] = useState("none");
   const [user, setUser] = useState("");
+  const [picture, setPicture] = useState("");
   const [mobile, setMobile] = useState("");
   const [slider, setSlider] = useState("1000px");
   const [brands, setBrands] = useState("0");
@@ -31,6 +34,7 @@ const Navbar = () => {
       .then((res) => res.json())
       .then((json) => {
         setUser(json.username);
+        setPicture(json.picture);
       });
   }, [userid, usertoken]);
 
@@ -58,11 +62,16 @@ const Navbar = () => {
     }
   };
 
+  const removeCookies = () => {
+    cookies.remove("_id");
+    cookies.remove("token");
+  };
+
   const Getuser = () => {
     if (user === "") {
       return <Guest />;
     } else {
-      return <User name={user} />;
+      return <User name={user} picture={picture} />;
     }
   };
 
@@ -854,7 +863,7 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li className="mobile-nav-item">
-                      <Link className="mobile-link">
+                      <Link className="mobile-link" onClick={removeCookies}>
                         Sign Out
                         <i className="fad fa-sign-out"></i>
                       </Link>
