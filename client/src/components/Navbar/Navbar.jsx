@@ -128,7 +128,7 @@ const Navbar = () => {
             style={{ pointerEvents: brandVisibility, opacity: brandDisplay }}
           >
             <div className="container">
-              <Link to="/nike" className="nike-logo">
+              <Link to="/brands/Nike" className="nike-logo">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 308.72 161.06"
@@ -147,7 +147,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/adidas" className="adidas-logo">
+              <Link to="/brands/Adidas" className="adidas-logo">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 355.73 236.69"
@@ -171,7 +171,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/vans" className="vans-logo">
+              <Link to="/brands/Vans" className="vans-logo">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 175.75 117.85"
@@ -266,7 +266,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/newbalance" className="newbalance-logo">
+              <Link to="/brands/Newbalance" className="newbalance-logo">
                 <svg
                   className="newbalance"
                   xmlns="http://www.w3.org/2000/svg"
