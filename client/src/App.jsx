@@ -18,63 +18,109 @@ function App() {
     <UserProvider>
       <div className="App">
         <Router>
-          <Navbar />
           <Switch>
-            <Route exact path="/" component={() => <Home brand="home" />} />
             <Route
               exact
-              path="/nike"
-              component={() => <Brands brand="nike" id="Nike" />}
+              path="/"
+              component={() => {
+                return (
+                  <>
+                    <Navbar />
+                    <Home brand="home" />;
+                  </>
+                );
+              }}
             />
             <Route
               exact
-              path="/adidas"
-              component={() => <Brands brand="adidas" id="Adidas" />}
+              path="/brands/:brandName"
+              component={({ match }) => {
+                return (
+                  <>
+                    <Navbar />
+                    <Brands
+                      brand={match.params.brandName.toLowerCase()}
+                      id={match.params.brandName}
+                    />
+                    ;
+                  </>
+                );
+              }}
             />
             <Route
               exact
-              path="/vans"
-              component={() => <Brands brand="vans" id="Vans" />}
+              path="/search"
+              component={() => {
+                return (
+                  <>
+                    <Navbar />
+                    <Searchcontent />;
+                  </>
+                );
+              }}
             />
-            <Route
-              exact
-              path="/converse"
-              component={() => <Brands brand="converse" id="Converse" />}
-            />
-            <Route
-              exact
-              path="/newbalance"
-              component={() => <Brands brand="newbalance" id="NewBalance" />}
-            />
-            <Route
-              exact
-              path="/reebok"
-              component={() => <Brands brand="reebok" id="Reebok" />}
-            />
-            <Route exact path="/search" component={Searchcontent} />
             <Route
               exact
               path="/stockX"
-              component={() => <Pricing pricing="stockX" />}
+              component={() => {
+                return (
+                  <>
+                    <Navbar />
+                    <Pricing pricing="stockX" />;
+                  </>
+                );
+              }}
             />
             <Route
               exact
               path="/goat"
-              component={() => <Pricing pricing="goat" />}
+              component={() => {
+                return (
+                  <>
+                    <Navbar />
+                    <Pricing pricing="goat" />;
+                  </>
+                );
+              }}
             />
             <Route
               exact
               path="/flightclub"
-              component={() => <Pricing pricing="flightClub" />}
+              component={() => {
+                return (
+                  <>
+                    <Navbar />
+                    <Pricing pricing="flightClub" />;
+                  </>
+                );
+              }}
             />
             <Route
               exact
               path="/stadiumgoods"
-              component={() => <Pricing pricing="stadiumGoods" />}
+              component={() => {
+                return (
+                  <>
+                    <Navbar />
+                    <Pricing pricing="stadiumGoods" />;
+                  </>
+                );
+              }}
             />
             <Route exact path="/sign-in" component={Signin} />
             <Route exact path="/sign-up" component={Signup} />
-            <Route exact path="/profile" component={Profile} />
+            <Route
+              exact
+              path="/profile"
+              component={() => {
+                return (
+                  <>
+                    <Navbar />
+                    <Profile />;
+                  </>
+                );
+              }}
+            />
             <Route component={Page404} />
           </Switch>
         </Router>
