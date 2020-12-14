@@ -81,9 +81,7 @@ const Brands = ({ brand, id }) => {
       <Hero brands={brand} />
       <main className="main-content">
         <div className="container">
-          <h1 className="trending">
-            Brands / {brand.charAt(0).toUpperCase() + brand.slice(1)}
-          </h1>
+          <h1 className="trending">Brands / {id}</h1>
           <Render />
         </div>
         <Footer />
