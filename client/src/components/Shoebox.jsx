@@ -50,7 +50,6 @@ const Shoebox = ({ product }) => {
       ></button>
     );
   }
-
   return (
     <>
       <main id={product._id} className="main-shoebox">
