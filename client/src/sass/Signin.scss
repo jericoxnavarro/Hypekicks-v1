@@ -3,6 +3,7 @@ $secondary: #043353;
 $secondary-light: #383c58;
 $content: #7de89d;
 $text: #b3c0cc;
+$error: #ff5655;
 
 .main-signin {
   height: 100%;
@@ -10,16 +11,28 @@ $text: #b3c0cc;
   display: flex;
   justify-content: center;
 
+  .status-message {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    background-color: $error;
+    font-weight: 600;
+    font-size: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary;
+  }
+
   .hypekicks-info {
     height: 100%;
     width: 40%;
-    background-color: $primary;
+    background-color: $secondary;
     .container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding-top: 50px;
       .hype-name {
         font-family: "futurabold_italic";
         font-size: 80px;
@@ -27,7 +40,7 @@ $text: #b3c0cc;
         color: $content;
         span {
           font-family: "futuraextra_black";
-          color: $secondary;
+          color: $primary;
           margin-right: 3px;
         }
       }
@@ -42,13 +55,25 @@ $text: #b3c0cc;
   .hypekicks-signin {
     height: 100%;
     width: 60%;
-    background-color: $text;
+    background-color: $primary;
+    .sign-up {
+      position: fixed;
+      right: 25px;
+      top: 50px;
+      display: flex;
+      font-size: 0.5rem;
+      .not-member {
+        margin-right: 0.1rem;
+      }
+      .sign-up-now {
+        text-decoration: none;
+      }
+    }
     .container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding-top: 100px;
       .signin-form {
         height: 70%;
         width: 70%;
@@ -62,6 +87,7 @@ $text: #b3c0cc;
           color: $secondary;
           width: 70%;
           margin-bottom: 20px;
+          font-size: 1.2rem;
         }
         label {
           display: flex;
@@ -82,7 +108,7 @@ $text: #b3c0cc;
           border: none;
           margin-bottom: 20px;
           margin-top: 10px;
-          background-color: $primary;
+          background-color: $text;
           transition: 200ms ease-in;
           font-size: 16px;
 
@@ -96,13 +122,6 @@ $text: #b3c0cc;
             border: 1px solid $text;
             background-color: $primary;
           }
-        }
-        .error {
-          font-size: 0.5rem;
-          text-align: left;
-          color: rgb(236, 130, 130);
-          margin-bottom: 10px;
-          width: 70%;
         }
         .submit {
           width: 200px;
@@ -122,6 +141,41 @@ $text: #b3c0cc;
         }
         .btn-wrapper {
           width: 70%;
+          @keyframes rotating {
+            from {
+              -ms-transform: rotate(0deg);
+              -moz-transform: rotate(0deg);
+              -webkit-transform: rotate(0deg);
+              -o-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+            to {
+              -ms-transform: rotate(360deg);
+              -moz-transform: rotate(360deg);
+              -webkit-transform: rotate(360deg);
+              -o-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+          .loading {
+            background-color: $secondary;
+            width: 200px;
+            height: 60px;
+            outline: none;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 20px;
+            color: $primary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i {
+              font-size: 1.2rem;
+              color: $content;
+              animation: rotating 1s linear infinite;
+            }
+          }
         }
       }
     }
