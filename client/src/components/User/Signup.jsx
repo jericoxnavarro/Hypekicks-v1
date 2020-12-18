@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../../sass/Signup.scss";
 
 const Signup = () => {
   const [status, setStatus] = React.useState("");
   const [onload, setOnload] = React.useState("");
+  let history = useHistory();
 
   const submit = (e) => {
     e.preventDefault();
@@ -78,12 +79,12 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.status);
         if (json.status === "none") {
           setStatus(json.message);
-          console.log(json.message);
+          console.log(23);
         } else {
           setStatus(json.message);
+          history.push("/");
         }
       });
   };
