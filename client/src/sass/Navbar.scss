@@ -101,7 +101,7 @@ $text: #b3c0cc;
           }
         }
         .user-fname {
-          font-size: 20px;
+          font-size: 0.5rem;
           font-weight: 700;
           color: $primary;
         }
@@ -187,6 +187,7 @@ $text: #b3c0cc;
               color: $secondary;
               font-weight: 700;
               font-size: 0.5rem;
+              cursor: pointer;
               i {
                 font-size: 0.5rem;
                 margin-right: 10px;
