@@ -171,6 +171,7 @@ exports.userLogin = async (req, res) => {
     res.status(200).header("auth-token", token).send({
       token: token,
       _id: user._id,
+      logged_in: "Yes",
       message: `User verified`,
       status: 200,
     });
