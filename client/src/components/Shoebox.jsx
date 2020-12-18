@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../sass/Shoebox.scss";
 import Links from "./Scripts/Imagelinks";
 import Brandlogo from "./Scripts/Brandlogo";
+import { UserContext } from "./User.context";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 const Shoebox = ({ product }) => {
   // Styles states
@@ -13,6 +16,10 @@ const Shoebox = ({ product }) => {
   const [images, setImages] = useState(product.thumbnail);
   const [link, setLink] = useState(0);
   const imgLINKS = Links(product.thumbnail, product.shoeName);
+  const { _uid, token, logged_in } = useContext(UserContext);
+  const [userid] = _uid;
+  const [usertoken] = token;
+  const [logged_In] = logged_in;
 
   useEffect(() => {
     let Links = imgLINKS[link];
@@ -50,6 +57,48 @@ const Shoebox = ({ product }) => {
       ></button>
     );
   }
+
+  const Favorite = () => {
+    if (logged_In === "Yes") {
+      return <button className="addfav-btn">Add Favorite</button>;
+    } else {
+      return <></>;
+    }
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    let formData = [];
+
+    const data = new FormData(e.target);
+    data.forEach(function (value, key) {
+      formData.push(value);
+    });
+
+    fetch(`http://localhost:3001/api/user/updatefavorites/${userid}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        sneaker: {
+          shoeName: product.shoeName,
+          brand: product.brand,
+          styleID: product.styleID,
+          thumbnail: product.thumbnail,
+          store: formData[0],
+          price: product.retailPrice,
+          description: product.description,
+        },
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": usertoken,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+      });
+  };
+
   return (
     <>
       <main id={product._id} className="main-shoebox">
@@ -94,11 +143,18 @@ const Shoebox = ({ product }) => {
           </div>
           <div className="shoe-infos">
             <h1 className="shoename">{product.shoeName}</h1>
-            <button className="addfav-btn">Add Favorite</button>
+            <form className="form-favorite" onSubmit={(e) => submit(e)}>
+              <Favorite />
+              <select className="select-seller" name="seller">
+                <option value="stockX">stockX</option>
+                <option value="goat">goat</option>
+                <option value="flightClub">flightClub</option>
+                <option value="stadiumGoods">stadiumGoods</option>
+              </select>
+            </form>
             <div className="resellers">
               <div className="resellers-logo">
                 <a
-                  href=""
                   onClick={(e) => {
                     window.open(`${product.resellLinks.stockX}`, "_blank");
                   }}
