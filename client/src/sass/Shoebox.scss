@@ -408,23 +408,55 @@ $red: #e94553;
         color: $primary;
         margin-bottom: 25px;
       }
-      .addfav-btn {
-        height: 3.5em;
-        width: 60%;
-        border-radius: 30px;
-        outline: none;
-        border: none;
-        font-weight: 900;
-        font-size: 0.5em;
+      .form-favorite {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
         margin-bottom: 30px;
-        color: $primary;
-        background-color: $content;
-        cursor: pointer;
-        transition: 100ms ease-in-out;
+        .addfav-btn {
+          height: 3.5em;
+          width: 60%;
+          border-radius: 30px;
+          outline: none;
+          border: none;
+          font-weight: 900;
+          font-size: 0.5em;
+          color: $primary;
+          background-color: $content;
+          cursor: pointer;
+          transition: 100ms ease-in-out;
+          margin-right: auto;
 
-        &:hover {
-          background-color: $text;
-          color: $content;
+          &:hover {
+            background-color: $text;
+            color: $content;
+          }
+        }
+        .select-seller {
+          padding: 5px 15px;
+          width: 25%;
+          height: 1.2rem;
+          border-radius: 8px;
+          outline: none;
+          border: none;
+          background-color: $primary;
+          transition: 200ms ease-in;
+          font-size: 16px;
+          font-weight: 700;
+          color: $secondary;
+          margin-right: auto;
+
+          &:hover {
+            box-shadow: 0 0 0 3.8pt #7de89d5e;
+            border: 1px solid $text;
+            background-color: $primary;
+          }
+          &:focus {
+            box-shadow: 0 0 0 3.8pt #7de89d5e;
+            border: 1px solid $text;
+            background-color: $primary;
+          }
         }
       }
       .remove {
