@@ -1,16 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../../sass/Signin.scss";
 import Cookies from "universal-cookie";
 import { UserContext } from "../User.context";
 
 const Signin = () => {
   const cookies = new Cookies();
-  const { _uid, token } = React.useContext(UserContext);
+  const { _uid, token, logged_in } = React.useContext(UserContext);
   const [status, setStatus] = React.useState("");
   const [onload, setOnload] = React.useState("");
   const [userid, setUserid] = _uid;
   const [usertoken, setUsertoken] = token;
+  const [logged_In, setLogged_In] = logged_in;
+  let history = useHistory();
 
   const submit = (e) => {
     setOnload("1");
@@ -61,20 +63,27 @@ const Signin = () => {
           const date = new Date(Date.now() + 55920000);
           setUserid(json._id);
           setUsertoken(json.token);
+          setLogged_In(json.logged_in);
           cookies.set("token", json.token, {
             expires: date,
           });
           cookies.set("_id", json._id, {
             expires: date,
           });
-          setStatus("");
+          cookies.set("logged_in", json.logged_in, { expires: date });
+          setStatus("done");
           setOnload("");
+          history.push("/");
         }
       });
   };
 
   const Status = () => {
-    if (status !== "") {
+    if (status === "done") {
+      return (
+        <div className="status-message success">Sign in successfully.</div>
+      );
+    } else if (status !== "") {
       return <div className="status-message">{status}</div>;
     } else {
       return <></>;
