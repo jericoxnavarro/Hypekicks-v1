@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../../sass/Navbar.scss";
 import Guest from "./Guest";
 import User from "./User";
@@ -8,35 +8,18 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
 const Navbar = () => {
-  const { _uid, token } = useContext(UserContext);
-  const [userid] = _uid;
-  const [usertoken] = token;
+  const { _User } = useContext(UserContext);
+  const [user, setUser] = _User;
   const [brandDisplay, setbrandDisplay] = useState(0);
   const [brandVisibility, setbrandVisibility] = useState("none");
   const [pricingDisplay, setpricingDisplay] = useState(0);
   const [pricingVisibility, setpricingVisibility] = useState("none");
-  const [user, setUser] = useState("");
-  const [picture, setPicture] = useState("");
   const [mobile, setMobile] = useState("");
   const [slider, setSlider] = useState("1000px");
   const [brands, setBrands] = useState("0");
   const [brandsdisplay, setBrandsdisplay] = useState("none");
   const [windowsize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/api/user/${userid}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": usertoken,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        setUser(json.username);
-        setPicture(json.picture);
-      });
-  }, [userid, usertoken]);
+  let history = useHistory();
 
   const Change = () => {
     if (mobile === "open") {
@@ -65,13 +48,16 @@ const Navbar = () => {
   const removeCookies = () => {
     cookies.remove("_id");
     cookies.remove("token");
+    cookies.remove("logged_in");
+    history.push("/");
+    window.location.reload();
   };
 
   const Getuser = () => {
     if (user === "") {
       return <Guest />;
     } else {
-      return <User name={user} picture={picture} />;
+      return <User user={user} />;
     }
   };
 
