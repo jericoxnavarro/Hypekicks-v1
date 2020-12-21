@@ -55,9 +55,19 @@ exports.updateUserFavorites = async (req, res) => {
 
   try {
     const userID = req.params.userID;
+    const reqBody = req.body.sneaker;
+    const findExis = await User.find({ _id: userID });
+    const favorites = findExis[0].favorites;
+    for (let i = 0; i < favorites.length; i++) {
+      if (findExis[0].favorites[i].styleID === reqBody.styleID)
+        return res.status(409).send({
+          message: "This shoe is already exist in your favorites.",
+          status: 409,
+        });
+    }
     const updateFavorites = await User.updateOne(
       { _id: userID },
-      { $push: { favorites: [req.body.sneaker] } }
+      { $push: { favorites: reqBody } }
     );
     return res.status(200).json({
       data: updateFavorites,
