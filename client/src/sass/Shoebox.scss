@@ -4,6 +4,7 @@ $secondary-light: #383c58;
 $content: #7de89d;
 $text: #b3c0cc;
 $red: #e94553;
+$error: #ff5655;
 
 .main-shoebox {
   background-color: $primary;
@@ -164,6 +165,30 @@ $red: #e94553;
   justify-content: center;
   align-items: center;
   padding: 40px 0px;
+  justify-content: center;
+  align-items: center;
+
+  .status-message {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    font-weight: 600;
+    font-size: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary;
+    top: 0;
+    z-index: 15;
+  }
+
+  .error {
+    background-color: $error;
+  }
+
+  .success {
+    background-color: $content;
+  }
 
   .info-box {
     height: 100%;
@@ -460,7 +485,18 @@ $red: #e94553;
         }
       }
       .remove {
+        height: 3.5em;
+        width: 60%;
+        border-radius: 30px;
+        outline: none;
+        border: none;
+        font-weight: 900;
+        font-size: 0.5em;
+        color: $primary;
         background-color: $red;
+        cursor: pointer;
+        transition: 100ms ease-in-out;
+        margin-right: auto;
 
         &:hover {
           color: $primary;
@@ -525,11 +561,12 @@ $red: #e94553;
           .price-fav {
             font-size: 40px;
             margin-right: 15px;
-            color: $secondary;
+            color: $primary;
           }
           .from {
             font-weight: 500;
             color: $text;
+            font-size: 0.7rem;
             margin-right: 15px;
           }
         }
@@ -565,7 +602,7 @@ $red: #e94553;
       }
       .fav-des {
         margin-top: 15px;
-        color: $secondary-light;
+        color: $primary;
         font-size: 18px;
       }
     }
