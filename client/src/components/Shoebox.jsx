@@ -17,6 +17,7 @@ const Shoebox = ({ product }) => {
   const [link, setLink] = useState(0);
   const imgLINKS = Links(product.thumbnail, product.shoeName);
   const { _uid, token, logged_in } = useContext(UserContext);
+  const [status, setStatus] = useState("");
   const [userid] = _uid;
   const [usertoken] = token;
   const [logged_In] = logged_in;
@@ -60,7 +61,17 @@ const Shoebox = ({ product }) => {
 
   const Favorite = () => {
     if (logged_In === "Yes") {
-      return <button className="addfav-btn">Add Favorite</button>;
+      return (
+        <form className="form-favorite" onSubmit={(e) => submit(e)}>
+          <button className="addfav-btn">Add Favorite</button>
+          <select className="select-seller" name="seller">
+            <option value="stockX">stockX</option>
+            <option value="goat">goat</option>
+            <option value="flightClub">flightClub</option>
+            <option value="stadiumGoods">stadiumGoods</option>
+          </select>
+        </form>
+      );
     } else {
       return <></>;
     }
@@ -95,8 +106,27 @@ const Shoebox = ({ product }) => {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
+        const statusCode = json.status.toString();
+        setStatus(statusCode);
       });
+  };
+
+  const Status = () => {
+    if (status === "409") {
+      return (
+        <div className="status-message error">
+          This shoe is already exist in your favorites.
+        </div>
+      );
+    } else if (status === "200") {
+      return (
+        <div className="status-message success">
+          Successfully added to your favorites.
+        </div>
+      );
+    } else {
+      return <></>;
+    }
   };
 
   return (
@@ -127,6 +157,7 @@ const Shoebox = ({ product }) => {
       </main>
 
       <div className="shoe-info-box" style={{ display: infoboxDisplay }}>
+        <Status />
         <div className="info-box">
           <div className="shoe-images">
             <img className="shoe" src={images} alt={product.styleID} />
@@ -143,15 +174,7 @@ const Shoebox = ({ product }) => {
           </div>
           <div className="shoe-infos">
             <h1 className="shoename">{product.shoeName}</h1>
-            <form className="form-favorite" onSubmit={(e) => submit(e)}>
-              <Favorite />
-              <select className="select-seller" name="seller">
-                <option value="stockX">stockX</option>
-                <option value="goat">goat</option>
-                <option value="flightClub">flightClub</option>
-                <option value="stadiumGoods">stadiumGoods</option>
-              </select>
-            </form>
+            <Favorite />
             <div className="resellers">
               <div className="resellers-logo">
                 <a
