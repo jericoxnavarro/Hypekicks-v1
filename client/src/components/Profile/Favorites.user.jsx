@@ -52,7 +52,7 @@ const Favorites = ({ product }) => {
   }
   return (
     <>
-      <main className="main-shoebox" onClick={() => setinfoboxDisplay("block")}>
+      <main className="main-shoebox" onClick={() => setinfoboxDisplay("flex")}>
         <div className="image-box">
           <div className="brand">
             <Brandlogosvg brand={product.brand} />
