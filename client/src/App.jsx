@@ -111,7 +111,7 @@ function App() {
             <Route exact path="/sign-up" component={Signup} />
             <Route
               exact
-              path="/profile"
+              path="/profile/:username"
               component={() => {
                 return (
                   <>
