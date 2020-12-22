@@ -15,6 +15,76 @@ $text: #b3c0cc;
     height: auto;
     padding-top: 30px;
     padding-bottom: 30px;
+    .main-settings {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 50px;
+      .settings-text {
+        width: 90%;
+        font-weight: 800;
+        color: $secondary;
+        font-size: 1rem;
+
+        span {
+          color: $text;
+          font-weight: 600;
+        }
+        .name {
+          font-weight: 800;
+          color: $content;
+        }
+      }
+      .upload-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 50px;
+        .profile-pic {
+          height: 150px;
+          width: 150px;
+          border-radius: 50%;
+          background-color: $secondary;
+        }
+
+        .upload-btn {
+          margin-top: 10px;
+          outline: none;
+          border: none;
+          height: 55px;
+          width: 5rem;
+          border-radius: 8px;
+          background-color: $content;
+          font-size: 0.4rem;
+          font-weight: 700;
+          color: $primary;
+          cursor: pointer;
+          margin-left: 20px;
+          i {
+            margin-right: 5px;
+            font: 20px;
+          }
+          &:hover {
+            color: #043353;
+            background-color: #7de89d98;
+          }
+        }
+
+        .upload-image-form {
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          flex-direction: column;
+          padding-left: 20px;
+          .upload-btn {
+            margin-top: 20px;
+            margin-left: 0;
+          }
+        }
+      }
+    }
   }
   .container {
     .profile-info {
