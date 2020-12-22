@@ -162,7 +162,10 @@ const Shoebox = ({ product }) => {
           <div className="shoe-images">
             <img className="shoe" src={images} alt={product.styleID} />
             <i
-              onClick={() => setinfoboxDisplay("none")}
+              onClick={() => {
+                setinfoboxDisplay("none");
+                setStatus("");
+              }}
               className="fad fa-times-circle"
             ></i>
             <div
