@@ -33,7 +33,7 @@ const Guest = () => {
         return <div className="profilepic"></div>;
       }
     };
-
+    console.log(user);
     return (
       <>
         <div
@@ -60,7 +60,10 @@ const Guest = () => {
           <nav className="navbar-profile">
             <ul className="nav-items-profile">
               <li className="nav-item-profile">
-                <Link className="link-profile" to="/profile">
+                <Link
+                  className="link-profile"
+                  to={`/profile/${user.user.username}`}
+                >
                   <i className="fad fa-user-alt"></i>Profile
                 </Link>
               </li>
