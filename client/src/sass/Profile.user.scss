@@ -3,6 +3,8 @@ $secondary: #043353;
 $secondary-light: #383c58;
 $content: #7de89d;
 $text: #b3c0cc;
+$red: #e94553;
+$error: #ff5655;
 
 .main-profile {
   height: 100%;
@@ -21,6 +23,7 @@ $text: #b3c0cc;
       align-items: center;
       flex-direction: column;
       padding-top: 50px;
+
       .settings-text {
         width: 90%;
         font-weight: 800;
@@ -36,17 +39,35 @@ $text: #b3c0cc;
           color: $content;
         }
       }
+
+      .seperator {
+        width: 90%;
+        border-top: 2px solid $text;
+        margin-top: 40px;
+      }
+      .wrapper-forms {
+        width: 40%;
+      }
       .upload-image {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         width: 100%;
         margin-top: 50px;
+
         .profile-pic {
           height: 150px;
           width: 150px;
           border-radius: 50%;
           background-color: $secondary;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          font-size: 2rem;
+          font-weight: 900;
+          color: $content;
+          font-family: "futurabold_italic";
         }
 
         .upload-btn {
@@ -84,6 +105,16 @@ $text: #b3c0cc;
           }
         }
       }
+
+      .update-info {
+        margin-top: 40px;
+        width: 100%;
+      }
+      .update-password {
+        margin-top: 40px;
+        margin-bottom: 60px;
+        width: 100%;
+      }
     }
   }
   .container {
@@ -109,7 +140,14 @@ $text: #b3c0cc;
           width: 200px;
           border-radius: 50%;
           box-shadow: 0 0 0 8pt #7de89da9;
-
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          font-size: 3rem;
+          font-weight: 900;
+          color: $content;
+          font-family: "futurabold_italic";
           &:hover {
             box-shadow: 0 0 0 8pt #7fffa580;
           }
@@ -132,6 +170,7 @@ $text: #b3c0cc;
           font-size: 22px;
           color: $text;
         }
+
         .profile-edit {
           margin-top: 10px;
           outline: none;
@@ -151,6 +190,13 @@ $text: #b3c0cc;
           &:hover {
             color: #043353;
             background-color: #7de89d98;
+          }
+        }
+        .cancel {
+          background-color: $error;
+          &:hover {
+            color: $primary;
+            background-color: #ff565598;
           }
         }
       }

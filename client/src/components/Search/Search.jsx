@@ -335,7 +335,7 @@ const Search = () => {
               </g>
             </svg>
           </div>
-          <form className="search">
+          <form className="search" onSubmit={(e) => e.preventDefault()}>
             <input
               className="search-input"
               placeholder="Search"

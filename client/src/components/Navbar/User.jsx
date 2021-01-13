@@ -30,7 +30,11 @@ const Guest = () => {
           />
         );
       } else {
-        return <div className="profilepic"></div>;
+        return (
+          <div className="profilepic">
+            {user.user.fullname.charAt(0).toUpperCase()}
+          </div>
+        );
       }
     };
     console.log(user);

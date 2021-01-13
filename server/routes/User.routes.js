@@ -23,6 +23,9 @@ router.put(
   UserControllers.updateUserFavorites
 );
 
+// Update Info
+router.put("/user/updateinfo/:userID", verify, UserControllers.updateUserInfo);
+
 // User log in
 router.post("/user/login", UserControllers.userLogin);
 

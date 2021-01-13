@@ -48,6 +48,44 @@ exports.getUserFavorites = async (req, res) => {
   }
 };
 
+exports.updateUserInfo = async (req, res) => {
+  if (req.params.userID != req.user._id)
+    return res.status(401).send({ message: "User Access Denied", status: 401 });
+
+  const validationUpdate = Joi.object({
+    fullname: Joi.string().required().min(6),
+    email: Joi.string().required().email().min(6),
+    address: Joi.string().required().min(6),
+  });
+
+  const { error } = validationUpdate.validate(req.body);
+  if (error)
+    return res.status(400).send({
+      message: error.details[0].message,
+      status: "none",
+      statusCode: 400,
+    });
+
+  try {
+    const Name = req.body.fullname;
+    const Address = req.body.address;
+    const Email = req.body.email;
+    const userID = req.params.userID;
+
+    await User.updateMany(
+      { _id: userID },
+      { fullname: Name, address: Address, email: Email }
+    );
+
+    return res.status(200).json({
+      message: `User ${userID} information is updated`,
+      status: 200,
+    });
+  } catch (err) {
+    return res.status(400).json({ message: err.message, status: 400 });
+  }
+};
+
 exports.updateUserFavorites = async (req, res) => {
   // Check User ID if match
   if (req.params.userID != req.user._id)

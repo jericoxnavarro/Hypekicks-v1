@@ -99,7 +99,10 @@
 
 $primary: #ffffff;
 $secondary: #043353;
+$secondary-light: #383c58;
 $content: #7de89d;
+$text: #b3c0cc;
+$error: #ff5655;
 
 * {
   padding: 0%;
@@ -169,6 +172,68 @@ body {
 #root {
   height: 100%;
   width: 100%;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  font-weight: 700;
+  font-size: 18px;
+  color: $secondary;
+  margin-bottom: 20px;
+  margin-top: 10px;
+
+  .details {
+    font-size: 15px;
+    font-weight: 500;
+    color: $secondary-light;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+}
+
+.input {
+  padding: 5px 15px;
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  background-color: $text;
+  transition: 200ms ease-in;
+  font-size: 16px;
+  margin-top: 10px;
+
+  &:hover {
+    box-shadow: 0 0 0 3.8pt #0433535e;
+    border: 1px solid $text;
+    background-color: $primary;
+  }
+  &:focus {
+    box-shadow: 0 0 0 3.8pt #0433535e;
+    border: 1px solid $text;
+    background-color: $primary;
+  }
+}
+
+.submit {
+  width: 6rem;
+  height: 60px;
+  outline: none;
+  border: none;
+  background-color: $content;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.5rem;
+  color: $primary;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #7de89daf;
+  }
 }
 
 .preloader {

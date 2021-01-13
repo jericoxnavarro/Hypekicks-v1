@@ -192,7 +192,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/converse" className="converse-logo">
+              <Link to="/brands/Converse" className="converse-logo">
                 <svg
                   className="converse"
                   xmlns="http://www.w3.org/2000/svg"
@@ -252,7 +252,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/brands/Newbalance" className="newbalance-logo">
+              <Link to="/brands/NewBalance" className="newbalance-logo">
                 <svg
                   className="newbalance"
                   xmlns="http://www.w3.org/2000/svg"
@@ -352,7 +352,7 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/reebok" className="reebok-logo">
+              <Link to="/brands/Reebok" className="reebok-logo">
                 <svg
                   className="reebok"
                   xmlns="http://www.w3.org/2000/svg"

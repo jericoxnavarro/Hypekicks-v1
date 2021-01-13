@@ -88,7 +88,7 @@ $text: #b3c0cc;
         .profile-pic {
           height: 50px;
           width: 50px;
-          background-color: $content;
+          background-color: $secondary;
           border-radius: 50%;
           margin-right: 12px;
           box-shadow: 0 0 0 3.5pt #7de89da9;
@@ -98,6 +98,14 @@ $text: #b3c0cc;
             height: 100%;
             width: 100%;
             border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-size: 0.6rem;
+            font-weight: 900;
+            color: $content;
+            font-family: "futurabold_italic";
           }
         }
         .user-fname {
