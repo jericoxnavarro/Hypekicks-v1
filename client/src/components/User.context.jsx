@@ -21,7 +21,7 @@ export const UserProvider = (props) => {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/user/${userid}`, {
+    fetch(`/api/user/${userid}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
