@@ -66,7 +66,7 @@ const Signup = () => {
       setStatus("");
     }
 
-    fetch("http://localhost:3001/api/user/create", {
+    fetch(`${process.env.REACT_APP_API_URI}/api/user/create`, {
       method: "POST",
       body: JSON.stringify({
         username: formData[1],

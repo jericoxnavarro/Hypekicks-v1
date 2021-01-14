@@ -44,7 +44,7 @@ const Signin = () => {
       setStatus("");
     }
 
-    fetch("http://localhost:3001/api/user/login", {
+    fetch(`${process.env.REACT_APP_API_URI}/api/user/login`, {
       method: "POST",
       body: JSON.stringify({
         username: formData[0],
