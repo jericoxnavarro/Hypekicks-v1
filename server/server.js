@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const ScrapperControllers = require("./controllers/Scrapers.controllers");
+const path = require("path");
 require("dotenv").config();
 
 //Routes
@@ -10,6 +10,7 @@ const brandsRoute = require("./routes/Brands.routes");
 const popularRoute = require("./routes/Popular.routes");
 const userRoute = require("./routes/User.routes");
 const searchRoute = require("./routes/Search.routes");
+const UserControllers = require("./controllers/User.controllers");
 
 const app = express();
 const port = process.env.PORT;
@@ -23,6 +24,12 @@ app.use("/api", brandsRoute);
 app.use("/api", popularRoute);
 app.use("/api", userRoute);
 app.use("/api", searchRoute);
+app.get("/api", UserControllers.Routes);
+
+app.use(express.static("./build"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build/index.html"));
+});
 
 // DB Connections
 const dbURI = process.env.dbURI;

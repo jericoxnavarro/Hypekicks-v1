@@ -29,9 +29,7 @@ const Home = ({ brand }) => {
 
     // Get Products/Shoes Data in the Hypekicks API
     const getProducts = async (page) => {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URI}/api/popular?page=${page}&limit=20`
-      );
+      const response = await fetch(`/api/popular?page=${page}&limit=20`);
       const data = await response.json();
       setProducts(data.data);
       setNext(data.next);

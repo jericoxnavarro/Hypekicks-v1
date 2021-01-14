@@ -227,3 +227,36 @@ exports.userLogin = async (req, res) => {
     return res.status(400).json({ message: err.message, status: 400 });
   }
 };
+
+exports.Routes = (req, res) => {
+  res.status(200).send({
+    message: "Welcome to Hypekicks API",
+    routes: [
+      {
+        info: "Get all Brands",
+        Route: "/brands",
+        sample: "/brands",
+      },
+      {
+        info: "Get a Brand",
+        Route: "/brands/:brandName",
+        sample: "/brands/Nike?page=1&limit=10",
+      },
+      {
+        info: "Get all popular",
+        Route: "/popular",
+        sample: "/popular?page=1&limit=10",
+      },
+      {
+        info: "Search Sneakers",
+        Route: "/search",
+        sample: "/search?query=Jordan&page=1&limit=10",
+      },
+      {
+        info: "Search Sneakers Pricing",
+        Route: "/search/pricing/:sellerName",
+        sample: "/search/pricing/StockX?query=Jordan&page=1&limit=10",
+      },
+    ],
+  });
+};
