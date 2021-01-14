@@ -86,7 +86,7 @@ const Shoebox = ({ product }) => {
       formData.push(value);
     });
 
-    fetch(`http://localhost:3001/api/user/updatefavorites/${userid}`, {
+    fetch(`/api/user/updatefavorites/${userid}`, {
       method: "PUT",
       body: JSON.stringify({
         sneaker: {
