@@ -14,7 +14,7 @@ const Profile = () => {
   const [userid] = _uid;
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/user/${userid}`, {
+    fetch(`/api/user/${userid}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -51,10 +51,7 @@ const Profile = () => {
         "auth-token": usertoken,
       },
     };
-    const response = await fetch(
-      `http://localhost:3001/api/user/updateinfo/${userid}`,
-      options
-    );
+    const response = await fetch(`/user/updateinfo/${userid}`, options);
     const resData = await response.json();
     if (response.status === 200) {
       setCheck("favorites");
