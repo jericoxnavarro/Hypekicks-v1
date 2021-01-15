@@ -20,10 +20,17 @@ $text: #b3c0cc;
       height: 100%;
       width: 100%;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
       text-align: center;
+      .Title-box {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-right: auto;
+      }
       .hype-name {
         font-family: "futurabold_italic";
         font-size: 1rem;
@@ -39,6 +46,19 @@ $text: #b3c0cc;
         font-size: 0.4rem;
         font-weight: 700;
         color: $text;
+      }
+      .social-media {
+        a {
+          color: $text;
+          text-decoration: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          font-size: 0.8rem;
+          font-weight: 800;
+        }
       }
     }
   }

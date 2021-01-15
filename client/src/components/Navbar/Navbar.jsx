@@ -100,6 +100,9 @@ const Navbar = () => {
                 >
                   Pricing<i className="fad fa-angle-down down"></i>
                 </li>
+                <li className="nav-item">
+                  <Link to="/aboutus">About Us</Link>
+                </li>
               </ul>
               <Getuser />
             </nav>
@@ -546,7 +549,7 @@ const Navbar = () => {
                       className="drop-down"
                     >
                       <li className="mobile-nav-item">
-                        <Link className="mobile-link">
+                        <Link to="/brands/Nike" className="mobile-link">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 308.72 161.06"
@@ -568,7 +571,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                       <li className="mobile-nav-item">
-                        <Link className="mobile-link">
+                        <Link to="/brands/Adidas" className="mobile-link">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 355.73 236.69"
@@ -605,7 +608,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                       <li className="mobile-nav-item">
-                        <Link className="mobile-link">
+                        <Link to="/brands/Vans" className="mobile-link">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 175.75 117.85"
@@ -643,7 +646,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                       <li className="mobile-nav-item">
-                        <Link className="mobile-link">
+                        <Link to="/brands/Converse" className="mobile-link">
                           <svg
                             className="nav-logo converse"
                             xmlns="http://www.w3.org/2000/svg"
@@ -705,7 +708,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                       <li className="mobile-nav-item">
-                        <Link className="mobile-link">
+                        <Link to="/brands/NewBalance" className="mobile-link">
                           <svg
                             className="nav-logo newbalance"
                             xmlns="http://www.w3.org/2000/svg"
@@ -807,7 +810,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                       <li className="mobile-nav-item">
-                        <Link className="mobile-link">
+                        <Link to="/brands/Reebok" className="mobile-link">
                           <svg
                             className="nav-logo reebok"
                             xmlns="http://www.w3.org/2000/svg"
@@ -831,7 +834,7 @@ const Navbar = () => {
                     </ul>
 
                     <li className="mobile-nav-item">
-                      <Link className="mobile-link">
+                      <Link to="/brands/search" className="mobile-link">
                         Search
                         <i className="fad fa-search"></i>
                       </Link>
@@ -840,6 +843,12 @@ const Navbar = () => {
                       <Link className="mobile-link">
                         Pricing
                         <i className="fad fa-angle-down down"></i>
+                      </Link>
+                    </li>
+                    <li className="mobile-nav-item">
+                      <Link to="/aboutus" className="mobile-link">
+                        About Us
+                        <i className="fad fa-home-lg-alt"></i>
                       </Link>
                     </li>
                     <li className="mobile-nav-item">

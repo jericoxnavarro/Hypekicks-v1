@@ -10,6 +10,7 @@ import Pricing from "./components/Pricing/Pricing";
 import Signin from "./components/User/Signin";
 import Signup from "./components/User/Signup";
 import Profile from "./components/Profile/Profile.user";
+import Aboutus from "./components/About Us/Aboutus";
 import Page404 from "./components/404";
 import { UserProvider } from "./components/User.context";
 
@@ -117,6 +118,18 @@ function App() {
                   <>
                     <Navbar />
                     <Profile />;
+                  </>
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/aboutus"
+              component={() => {
+                return (
+                  <>
+                    <Navbar />
+                    <Aboutus />;
                   </>
                 );
               }}
