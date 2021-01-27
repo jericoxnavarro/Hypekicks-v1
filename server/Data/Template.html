@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Hypekicks Populars</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+      integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      /* $primary: #ffffff;
+        $secondary: #043353;
+        $secondary-light: #383c58;
+        $content: #7de89d;
+        $text: #b3c0cc; 
+      */
+
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+        max-width: 100%;
+      }
+      body {
+        height: 100vh;
+        width: 100vw;
+        background-color: #ffffff;
+      }
+      .Heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 15%;
+        background-color: #043353;
+      }
+      .Title {
+        font-weight: 900;
+        font-size: 3rem;
+        color: #ffffff;
+      }
+      .titlegreen {
+        color: #7de89d;
+      }
+      .User {
+        width: 100%;
+        height: 30%;
+        background-color: #7de89d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .main {
+        font-size: 4rem;
+        color: #043353;
+      }
+      .TopShoes {
+        height: 85%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 10px 60px;
+      }
+      .topTitle {
+        font-size: 2.5rem;
+        color: #043353;
+        margin-bottom: 20px;
+        margin-left: 20px;
+      }
+      .Shoes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80%;
+      }
+      .shoeBox {
+        height: 90%;
+        width: 100%;
+        margin: 20px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        overflow: hidden;
+      }
+      .imageBox {
+        padding: 20px;
+        height: 65%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .shoeImage {
+        height: 100%;
+        width: 100%;
+      }
+      .infoBox {
+        height: 40%;
+        width: 100%;
+        padding: 20px 30px;
+        background-color: #043353;
+      }
+      .shoeName {
+        font-weight: 800;
+        font-size: 1.8rem;
+        color: #b3c0cc;
+        margin-top: 10px;
+      }
+      .shoePrice {
+        font-weight: 700;
+        font-size: 2.5rem;
+        font-style: italic;
+        color: #7de89d;
+        margin-top: 10px;
+      }
+      .chartBox {
+        height: 700px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+        background-color: #043353;
+        padding: 60px;
+      }
+      .box {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #ffffff;
+        margin: 40px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        overflow: hidden;
+        border-radius: 20px;
+        padding: 30px;
+      }
+      .Chart {
+        height: 80%;
+        width: 100%;
+      }
+      .perBrand {
+        height: 100%;
+        width: 100%;
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .perBrandBox {
+        height: 100%;
+        width: 100%;
+        margin: 15px;
+        background-color: #7de89d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+      .brandName {
+        font-weight: 800;
+        color: #043353;
+      }
+      .count {
+        font-weight: 600;
+        color: #043353;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Heading">
+      <h1 class="Title">Hypekicks <span class="titlegreen">Report</span></h1>
+    </div>
+    <div class="User">
+      <h1 class="Title main">Latest Updates in the sneaker Market</h1>
+    </div>
+    <!-- Top Shoes -->
+    <div class="TopShoes" id="topshoes">
+      <h2 class="Title topTitle">Top 3 shoes in the market right now</h2>
+      <div class="Shoes" id="Shoes"></div>
+    </div>
+    <div class="chartBox">
+      <div class="box">
+        <canvas id="myChart" class="Chart"></canvas>
+      </div>
+      <div class="box">
+        <div class="perBrand">
+          <div class="perBrandBox">
+            <h2 class="brandName">Nike</h2>
+            <p class="count" id="Nike">300</p>
+          </div>
+        </div>
+        <div class="perBrand">
+          <div class="perBrandBox">
+            <h2 class="brandName">Adidas</h2>
+            <p class="count" id="Adidas">300</p>
+          </div>
+          <div class="perBrandBox">
+            <h2 class="brandName">Vans</h2>
+            <p class="count" id="Vans">300</p>
+          </div>
+          <div class="perBrandBox">
+            <h2 class="brandName">Converse</h2>
+            <p class="count" id="Converse">300</p>
+          </div>
+        </div>
+        <div class="perBrand">
+          <div class="perBrandBox">
+            <h2 class="brandName">New Balance</h2>
+            <p class="count" id="NewBalance">300</p>
+          </div>
+          <div class="perBrandBox">
+            <h2 class="brandName">Reebok</h2>
+            <p class="count" id="Reebok">300</p>
+          </div>
+          <div class="perBrandBox">
+            <h2 class="brandName">Others</h2>
+            <p class="count" id="Others">300</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Top Shoes -->
+    <script src="path/to/chartjs/dist/Chart.js"></script>
+    <script>
+      const link = "https://www.hypekicks.me";
+      const getBrands = async () => {
+        const fetchBrands = await fetch(`${link}/api/popular/brands`);
+        const response = await fetchBrands.json();
+        const resData = response.data;
+        var ctx = document.getElementById("myChart");
+        document.getElementById("Nike").innerHTML = resData.Nike;
+        document.getElementById("Adidas").innerHTML = resData.Adidas;
+        document.getElementById("Vans").innerHTML = resData.Vans;
+        document.getElementById("Converse").innerHTML = resData.Converse;
+        document.getElementById("NewBalance").innerHTML = resData.NewBalance;
+        document.getElementById("Reebok").innerHTML = resData.Reebok;
+        document.getElementById("Others").innerHTML = resData.Others;
+        var myChart = new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: [
+              "Nike",
+              "Adidas",
+              "Vans",
+              "Converse",
+              "New Balance",
+              "Reebok",
+              "Others",
+            ],
+            datasets: [
+              {
+                label: "# of Votes",
+                data: [
+                  resData.Nike,
+                  resData.Adidas,
+                  resData.Vans,
+                  resData.Converse,
+                  resData.NewBalance,
+                  resData.Reebok,
+                  resData.Others,
+                ],
+                backgroundColor: [
+                  "rgba(255, 99, 132, 0.2)",
+                  "rgba(54, 162, 235, 0.2)",
+                  "rgba(255, 206, 86, 0.2)",
+                  "rgba(75, 192, 192, 0.2)",
+                  "rgba(153, 102, 255, 0.2)",
+                  "rgba(255, 159, 64, 0.2)",
+                  "rgba(255, 40, 255, 0.2)",
+                ],
+                borderColor: [
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(255, 206, 86, 1)",
+                  "rgba(75, 192, 192, 1)",
+                  "rgba(153, 102, 255, 1)",
+                  "rgba(255, 159, 64, 1)",
+                  "rgba(255, 40, 255, 1)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: "Total of popular shoes per Brands",
+            },
+          },
+        });
+      };
+      getBrands();
+      const getTop = async () => {
+        const fetchBrands = await fetch(`${link}/api/popular/top`);
+        const response = await fetchBrands.json();
+        const resData = response.data;
+        var topshoes = document.getElementById("Shoes");
+        for (let i = 0; i < resData.length; i++) {
+          const shoeBox = document.createElement("div");
+          shoeBox.classList = "shoeBox";
+          shoeBox.innerHTML = `
+          <div class="imageBox">
+            <img class="shoeImage" src="${resData[i].thumbnail}" />
+          </div>
+          <div class="infoBox">
+            <h3 class="shoeName">
+              ${resData[i].shoeName}
+            </h3>
+            <p class="shoePrice">$${resData[i].retailPrice}</p>
+          </div>`;
+          topshoes.appendChild(shoeBox);
+        }
+      };
+      getTop();
+    </script>
+  </body>
+</html>

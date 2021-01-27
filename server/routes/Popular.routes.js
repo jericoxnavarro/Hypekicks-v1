@@ -7,4 +7,10 @@ router.get("/popular", PopularControllers.getPopular);
 
 router.post("/popular/add", PopularControllers.addPopular);
 
+router.get("/popular/top", PopularControllers.getTop);
+
+router.get("/popular/brands", PopularControllers.getBrandCount);
+
+router.get("/popular/report/:email", PopularControllers.sendEmail);
+
 module.exports = router;
