@@ -122,18 +122,6 @@ function App() {
                 );
               }}
             />
-            <Route
-              exact
-              path="/aboutus"
-              component={() => {
-                return (
-                  <>
-                    <Navbar />
-                    <Aboutus />;
-                  </>
-                );
-              }}
-            />
             <Route component={Page404} />
           </Switch>
         </Router>
